@@ -1194,7 +1194,7 @@ async function startRecording(){
         $("recordStatus").textContent="Recording...";
         await audioEl.play();
     }catch(e){
-        console.error(e);$("recordStatus").textContent="Recording error: "+e.message;cleanupRecording();
+        console.error(e);$("recordStatus").textContent="Recording error: "+e.message;$("stopRecordBtn").disabled=true;cleanupRecording();
     }
 }
 function pauseRecording(){if(mediaRecorder?.state==="recording"){mediaRecorder.pause();audioEl.pause();$("pauseRecordBtn").disabled=true;$("resumeRecordBtn").disabled=false;$("recordStatus").textContent="Paused."}}
