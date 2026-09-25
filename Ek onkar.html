@@ -50,6 +50,66 @@ select,input[type=text],input[type=password]{width:100%;background:#0a0a0f;color
 @media(max-width:1000px){.layout,.audio-layout{grid-template-columns:1fr}.preview-panel,.record-panel{min-height:auto}.canvas-shell{height:70vh}}
 @media(max-width:700px){.settings-columns{column-count:1}}
 @media(max-width:500px){.app{padding:10px}.background-theme-grid{grid-template-columns:repeat(2,1fr)}.background-controls{grid-template-columns:1fr}.row,.color-row{grid-template-columns:1fr}}
+.settings-columns{display:none}
+.design-tabs{display:flex;gap:7px;margin:18px 0 14px;padding:5px;border:1px solid #292936;border-radius:12px;background:#09090e}
+.design-tab{flex:1;padding:10px 8px;border:0;border-radius:8px;background:transparent;color:#999;font-size:12px;font-weight:700}
+.design-tab:hover{color:#fff;background:#ffffff08}.design-tab.active{background:#ffd166;color:#111}
+.design-panel{display:none;min-height:260px}.design-panel.active{display:block}
+.design-panel-heading{margin:0 0 5px;font-size:15px}.design-panel-hint{margin:0 0 16px;color:#85858f;font-size:11px;line-height:1.5}
+.choice-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}
+.choice-card{min-height:74px;padding:12px;border:1px solid #30303b;border-radius:11px;background:#0a0a0f;color:#eee;text-align:left;transition:.18s}
+.choice-card:hover{transform:translateY(-1px);border-color:#777}.choice-card.active{border-color:#ffd166;background:#ffd16612;box-shadow:0 0 0 1px #ffd16625}
+.choice-card strong{display:block;font-size:12px}.choice-card span{display:block;margin-top:5px;color:#85858f;font-size:10px;line-height:1.4}
+.palette-swatch{display:flex;gap:5px;margin-bottom:9px}.palette-swatch i{width:18px;height:18px;border-radius:50%;background:var(--swatch);box-shadow:0 0 12px color-mix(in srgb,var(--swatch),transparent 55%)}
+.choice-card[data-palette]{position:relative;display:flex;align-items:flex-end;min-height:78px;padding:0;overflow:hidden}
+.choice-card[data-palette] .palette-swatch{position:absolute;inset:0;display:flex;gap:0;margin:0}
+.choice-card[data-palette] .palette-swatch i{flex:1;width:auto;height:100%;border-radius:0;box-shadow:none}
+.choice-card[data-palette] strong{position:relative;z-index:1;width:100%;padding:9px 10px;color:#fff;background:linear-gradient(transparent,#000c);text-shadow:0 1px 3px #000}
+.design-text-field{display:block;margin:13px 0}.design-text-field span{display:block;margin-bottom:6px;color:#aaa;font-size:11px}
+.design-text-field input{background:#09090e;color:#eee;border:1px solid #30303b;border-radius:9px;padding:11px;width:100%}
+.design-button-row{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 16px}
+.design-choice{padding:9px 13px;border:1px solid #30303b;border-radius:9px;background:#0a0a0f;color:#bbb;font-size:11px}
+.design-choice:hover{border-color:#777;color:#fff}.design-choice.active{border-color:#ffd166;background:#ffd16618;color:#ffd166}
+.subtitle-preview{margin:16px 0 20px;padding:12px;border:1px solid #292936;border-radius:12px;background:#09090e}
+.subtitle-preview-label{display:block;margin-bottom:8px;color:#999;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em}
+.subtitle-preview-stage{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;min-height:118px;overflow:hidden;border:1px solid #33313a;border-radius:9px;background:radial-gradient(ellipse at 50% 88%,#644b132e,transparent 55%),linear-gradient(150deg,#181522,#08080c 70%)}
+.subtitle-preview-stage:before{content:"";position:absolute;left:12%;right:12%;top:52%;height:1px;background:linear-gradient(90deg,transparent,#ffd16680,transparent);box-shadow:0 0 14px #ffd16650}
+.subtitle-preview-title{position:relative;color:#fff4c2;font-size:9px;font-weight:800;letter-spacing:.18em;text-shadow:0 0 9px #ffd16688}
+.subtitle-preview-caption{position:relative;display:flex;flex-wrap:wrap;justify-content:center;gap:.28em;padding:0 10px;color:#fff;font-weight:700;text-align:center;transition:all .2s}
+.subtitle-preview-caption span.active{color:var(--preview-highlight,#ffd166)}
+.subtitle-preview-stage[data-style="karaoke"] .subtitle-preview-caption span.active{text-shadow:0 0 10px var(--preview-highlight,#ffd166)}
+.subtitle-preview-stage[data-style="glow"] .subtitle-preview-caption{text-shadow:0 0 6px var(--preview-highlight,#ffd166),0 0 16px var(--preview-highlight,#ffd166)}
+.subtitle-preview-stage[data-style="glow"] .subtitle-preview-caption span.active{color:var(--preview-highlight,#ffd166)}
+.subtitle-preview-stage[data-style="clean"] .subtitle-preview-caption span.active{color:inherit;text-shadow:none}
+.subtitle-preview-stage[data-style="neon"] .subtitle-preview-caption{text-shadow:0 0 5px var(--preview-highlight,#ffd166),0 0 12px var(--preview-highlight,#ffd166),0 0 24px var(--preview-highlight,#ffd166)}
+.subtitle-preview-stage[data-style="gold"] .subtitle-preview-caption{color:transparent;background:linear-gradient(100deg,var(--preview-highlight,#ffd166),#fff4c2,var(--preview-highlight,#ffd166));background-clip:text;-webkit-background-clip:text}
+.subtitle-preview-stage[data-style="outline"] .subtitle-preview-caption{-webkit-text-stroke:1px var(--preview-highlight,#ffd166);text-shadow:0 2px 5px #000}
+.subtitle-preview-stage[data-position="lower"]{justify-content:flex-end;padding-bottom:15px}
+.subtitle-preview-stage[data-position="center"]{justify-content:center}
+.subtitle-preview-note{margin:7px 0 0;color:#72727d;font-size:10px}
+.design-slot>.background-theme-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+.design-slot>.background-animation-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
+.design-slot .animation-card{grid-template-columns:27px minmax(0,1fr) 50px;padding:9px}
+.design-slot .animation-preview{display:block;width:46px;height:32px}
+.design-slot .animation-card[data-animation="slowZoom"] .animation-preview i{animation:aslowzoom 3s ease-in-out infinite}
+@keyframes aslowzoom{0%,100%{transform:scale(.75)}50%{transform:scale(1.2)}}
+.design-slot .custom-background-drop{margin-top:12px}
+.quality-choice{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}
+.quality-choice .choice-card{text-align:center}.quality-choice .choice-card span{font-size:10px}
+#openVisualizerFromSetup{display:inline-flex;align-items:center;justify-content:center;position:sticky;top:0;z-index:31;min-width:104px;box-shadow:0 6px 20px #0008}
+#openVisualizerFromAudio{display:none}
+#setupPage .topbar{top:0;}
+.audio-layout{grid-template-columns:minmax(280px,360px) minmax(0,1fr);max-width:1200px;margin:0 auto}
+.audio-controls,.record-panel{padding:20px}
+.audio-drop{border-style:solid;background:linear-gradient(145deg,#14141c,#09090e)}
+.audio-drop input{width:100%;margin-top:14px;color:#aaa}
+.transcript{height:200px;scroll-behavior:smooth}
+.transcription-options{margin-top:12px;color:#aaa;font-size:11px}
+.transcription-options summary{width:max-content;color:#c6c6ce;cursor:pointer}
+.transcription-options[open] summary{margin-bottom:8px;color:#ffd166}
+.record-actions{align-items:center}.record-actions .btn:disabled{opacity:.45;cursor:not-allowed}
+@media(max-width:1000px){.audio-layout{grid-template-columns:1fr}}
+@media(max-width:520px){.settings{padding:12px}.design-tab{font-size:10px;padding:10px 4px}.choice-grid,.quality-choice{grid-template-columns:repeat(2,minmax(0,1fr))}.design-panel{min-height:300px}.design-slot>.background-theme-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.design-slot>.background-animation-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -65,15 +125,94 @@ select,input[type=text],input[type=password]{width:100%;background:#0a0a0f;color
         <div class="brand-mark">ੴ</div>
         <div>
             <h1>Ek Onkar Visualizer Studio</h1>
-            <p>Design your visualizer before adding audio</p>
+            <p>A simple space for sacred sound and motion</p>
         </div>
     </div>
-    <button id="openVisualizerFromSetup" class="btn primary">✨ Preview</button>
+    <button id="openVisualizerFromSetup" class="btn primary" type="button">✨ Preview</button>
 </div>
 
 <div class="layout">
 
 <div class="panel settings">
+<div class="design-tabs" role="tablist" aria-label="Visualizer design options">
+    <button class="design-tab active" id="designTabLook" role="tab" aria-selected="true" aria-controls="designPanelLook" data-design-tab="look">✨ Look</button>
+    <button class="design-tab" id="designTabBackground" role="tab" aria-selected="false" aria-controls="designPanelBackground" data-design-tab="background">🌌 Background</button>
+    <button class="design-tab" id="designTabText" role="tab" aria-selected="false" aria-controls="designPanelText" data-design-tab="text">✍️ Text</button>
+    <button class="design-tab" id="designTabQuality" role="tab" aria-selected="false" aria-controls="designPanelQuality" data-design-tab="quality">🎞️ Quality</button>
+</div>
+<div id="designPanelLook" class="design-panel active" role="tabpanel" aria-labelledby="designTabLook">
+    <h2 class="design-panel-heading">Choose a visualizer style</h2><p class="design-panel-hint">Switch the central shape and motion with one tap.</p>
+    <div class="choice-grid" id="visualizerPresetGrid">
+        <button class="choice-card" data-preset="sacred"><strong>🪯 Sacred Glow</strong><span>Golden orb, flowing wave and soft glow</span></button>
+        <button class="choice-card" data-preset="pulse"><strong>💫 Pulse</strong><span>Bright ring with bold beat response</span></button>
+        <button class="choice-card" data-preset="minimal"><strong>◉ Minimal</strong><span>Clean solid shape with gentle motion</span></button>
+        <button class="choice-card" data-preset="spectrum"><strong>▥ Spectrum</strong><span>Sound bars with a radiant orb</span></button>
+        <button class="choice-card" data-preset="dream"><strong>◇ Dream</strong><span>Soft diamond with floating particles</span></button>
+        <button class="choice-card" data-preset="classic"><strong>〰 Classic</strong><span>Balanced orb and smooth waveform</span></button>
+    </div>
+    <h2 class="design-panel-heading" style="margin-top:22px">Color palette</h2><p class="design-panel-hint">Pick a ready-made set of matching colors.</p>
+    <div class="choice-grid" id="colorPresetGrid">
+        <button class="choice-card" data-palette="gold"><span class="palette-swatch"><i style="--swatch:#FFD166"></i><i style="--swatch:#FFF4C2"></i></span><strong>Golden</strong></button>
+        <button class="choice-card" data-palette="rose"><span class="palette-swatch"><i style="--swatch:#FF7B9C"></i><i style="--swatch:#FFE0E8"></i></span><strong>Rose</strong></button>
+        <button class="choice-card" data-palette="ocean"><span class="palette-swatch"><i style="--swatch:#40C9E8"></i><i style="--swatch:#C4F5FF"></i></span><strong>Ocean</strong></button>
+        <button class="choice-card" data-palette="violet"><span class="palette-swatch"><i style="--swatch:#A98BFF"></i><i style="--swatch:#E4DBFF"></i></span><strong>Violet</strong></button>
+        <button class="choice-card" data-palette="forest"><span class="palette-swatch"><i style="--swatch:#63D69A"></i><i style="--swatch:#D3FFE5"></i></span><strong>Forest</strong></button>
+        <button class="choice-card" data-palette="ember"><span class="palette-swatch"><i style="--swatch:#FF784F"></i><i style="--swatch:#FFE0A8"></i></span><strong>Ember</strong></button>
+    </div>
+</div>
+<div id="designPanelBackground" class="design-panel" role="tabpanel" aria-labelledby="designTabBackground" hidden>
+    <h2 class="design-panel-heading">Set the atmosphere</h2><p class="design-panel-hint">Choose a backdrop and a motion style, or add your own image.</p>
+    <h3 class="background-subheading">Theme</h3>
+    <div id="designThemeSlot" class="design-slot"></div>
+    <h3 class="background-subheading">Your own image</h3>
+    <div id="designImageSlot" class="design-slot"></div>
+    <h3 class="background-subheading">Background motion</h3><div id="designAnimationSlot" class="design-slot"></div>
+</div>
+<div id="designPanelText" class="design-panel" role="tabpanel" aria-labelledby="designTabText" hidden>
+    <h2 class="design-panel-heading">Make the words yours</h2><p class="design-panel-hint">Choose what appears on screen and how subtitles are styled.</p>
+    <label class="design-text-field"><span>Title</span><input id="titleTextChoice" type="text" maxlength="40" placeholder="EK ONKAR"></label>
+    <label class="design-text-field"><span>Tagline</span><input id="subtitleTextChoice" type="text" maxlength="60" placeholder="MUSIC • MOTION • ENERGY"></label>
+    <h3 class="background-subheading">Subtitle language</h3>
+    <div class="design-button-row" id="subtitleLanguageChoices" role="group" aria-label="Subtitle language">
+        <button class="design-choice" type="button" data-subtitle-language="pa" aria-pressed="false">ਪੰਜਾਬੀ</button>
+        <button class="design-choice" type="button" data-subtitle-language="hi" aria-pressed="false">हिन्दी</button>
+        <button class="design-choice" type="button" data-subtitle-language="en" aria-pressed="false">English</button>
+    </div>
+    <p id="subtitleLanguageStatus" class="design-panel-hint">Language will be detected automatically from the transcript.</p>
+    <h3 class="background-subheading">Subtitle style</h3>
+    <div class="design-button-row" id="subtitleStyleChoices">
+        <button class="design-choice" data-style="karaoke">Karaoke</button><button class="design-choice" data-style="clean">Clean</button><button class="design-choice" data-style="glow">Glow</button>
+        <button class="design-choice" data-style="gold">✨ Gold</button><button class="design-choice" data-style="neon">💡 Neon</button><button class="design-choice" data-style="outline">◉ Outline</button>
+    </div>
+    <h3 class="background-subheading">Subtitle size</h3>
+    <div class="design-button-row" id="subtitleSizeChoices">
+        <button class="design-choice" data-size="small">Small</button><button class="design-choice" data-size="medium">Medium</button><button class="design-choice" data-size="large">Large</button>
+    </div>
+    <h3 class="background-subheading">Subtitle placement</h3>
+    <div class="design-button-row" id="subtitlePositionChoices">
+        <button class="design-choice" data-position="center">Center</button><button class="design-choice" data-position="lower">Lower</button>
+    </div>
+    <h3 class="background-subheading">Words per screen</h3>
+    <div class="design-button-row" id="wordsPerLineChoices">
+        <button class="design-choice" data-words="few">Few</button><button class="design-choice" data-words="some">Balanced</button><button class="design-choice" data-words="many">More</button>
+    </div>
+    <div class="subtitle-preview">
+        <span id="subtitlePreviewLabel" class="subtitle-preview-label">Subtitle preview</span>
+        <div id="subtitlePreviewStage" class="subtitle-preview-stage" data-style="karaoke" data-position="lower">
+            <span class="subtitle-preview-title">ੴ &nbsp; EK ONKAR</span>
+            <div id="subtitlePreviewCaption" class="subtitle-preview-caption"><span>Waheguru</span><span>is</span><span class="active">within</span></div>
+        </div>
+        <p class="subtitle-preview-note">Sample only — your transcribed lyrics appear here during playback.</p>
+    </div>
+</div>
+<div id="designPanelQuality" class="design-panel" role="tabpanel" aria-labelledby="designTabQuality" hidden>
+    <h2 class="design-panel-heading">Choose recording quality</h2><p class="design-panel-hint">Higher quality creates a larger video file.</p>
+    <div class="quality-choice" id="qualityChoices">
+        <button class="choice-card" data-quality="low"><strong>Quick</strong><span>720p · smaller file</span></button>
+        <button class="choice-card" data-quality="medium"><strong>HD</strong><span>1080p · balanced</span></button>
+        <button class="choice-card" data-quality="high"><strong>Full HD</strong><span>1080p · smoother motion</span></button>
+    </div>
+</div>
 <div class="settings-columns">
 
 <!-- VISUALIZER -->
@@ -153,7 +292,7 @@ select,input[type=text],input[type=password]{width:100%;background:#0a0a0f;color
 <label class="field">Subtitle</label>
 <input id="subtitleText" type="text" value="MUSIC • MOTION • ENERGY">
 <div class="row">
-<div><label class="field">Subtitle Style</label><select id="subtitleStyle"><option value="karaoke">Karaoke</option><option value="clean">Clean</option><option value="glow">Glow</option></select></div>
+<div><label class="field">Subtitle Style</label><select id="subtitleStyle"><option value="karaoke">Karaoke</option><option value="clean">Clean</option><option value="glow">Glow</option><option value="gold">Gold</option><option value="neon">Neon</option><option value="outline">Outline</option></select></div>
 <div><label class="field">Words / Line</label><input id="wordsPerLine" type="text" value="5"></div>
 </div>
 <div class="range-row"><div class="range-head"><span>Subtitle Size</span><span id="subtitleSizeValue" class="range-value">52</span></div><input id="subtitleSize" type="range" min="25" max="90" value="52"></div>
@@ -235,20 +374,6 @@ select,input[type=text],input[type=password]{width:100%;background:#0a0a0f;color
 
 </div>
 
-<div class="panel preview-panel" hidden>
-<div class="preview-header">
-<div><h2>Live Design Preview</h2><p>Same renderer used for the final recording</p></div>
-<span id="previewResolution" style="color:#777;font-size:10px">720 × 1280</span>
-</div>
-<div class="preview-wrap">
-<div class="canvas-shell"><canvas id="previewCanvas" width="720" height="1280"></canvas></div>
-</div>
-<div class="preview-footer">
-<span>Background transitions are synchronized with the visualizer clock.</span>
-<span id="previewState">LIVE</span>
-</div>
-</div>
-
 </div>
 </div>
 </section>
@@ -280,7 +405,9 @@ select,input[type=text],input[type=password]{width:100%;background:#0a0a0f;color
 </div>
 
 <div class="section">
-<div class="section-title"><h2>Gemini Transcription</h2><span>Optional</span></div>
+<div class="section-title"><h2>Transcription</h2><span>Optional</span></div>
+<details class="transcription-options">
+<summary>Transcription settings</summary>
 <label class="field">Gemini API Key</label>
 <input id="apiKey" type="password" placeholder="Paste your Gemini API key">
 <label class="field">Language</label>
@@ -290,6 +417,7 @@ select,input[type=text],input[type=password]{width:100%;background:#0a0a0f;color
 <option value="hi">Hindi</option>
 <option value="en">English</option>
 </select>
+</details>
 <button id="transcribeBtn" class="btn primary" style="width:100%;margin-top:12px">Transcribe Audio</button>
 <div id="transcriptionStatus" class="status">Ready.</div>
 <div id="transcript" class="transcript">Transcription will appear here.</div>
@@ -358,11 +486,12 @@ const visualizerSettings = {
     glow:35,trail:25,particles:20,trebleReaction:35,sensitivity:50,
     enableGlow:true,enableTrails:true,enableParticles:true,enableRings:true,
     backgroundPulse:true,titleText:"EK ONKAR",subtitleText:"MUSIC • MOTION • ENERGY",
-    subtitleStyle:"karaoke",subtitleFont:"Noto Sans Gurmukhi",subtitleSize:52,
+    subtitleStyle:"karaoke",subtitleFont:"Noto Sans Gurmukhi",subtitleLanguage:"en",transcriptionLanguagePreference:"",subtitleSize:52,
     subtitleY:1450,subtitleColor:"#FFFFFF",highlightColor:"#FFD166",
     subtitleGlow:15,wordsPerLine:5,subtitleBeat:true,subtitleShadow:true,
     emojiAccents:true,beatRings:true,quality:"low",fps:30,videoBitrate:2500000,
     audioBitrate:64000,backgroundTheme:"spiritual",backgroundAnimation:"slowZoom",
+    visualizerPreset:"sacred",colorPreset:"gold",
     backgroundOpacity:.55,backgroundBlur:0,backgroundOverlay:.25,
     backgroundImage:null,backgroundImageName:"",backgroundImageObject:null
 };
@@ -383,8 +512,6 @@ const backgroundTransition={
     fromTheme:null,toTheme:null,fromImage:null,toImage:null,startedAt:0
 };
 
-let previewCanvas=document.getElementById("previewCanvas");
-let previewCtx=previewCanvas.getContext("2d");
 let canvas=document.getElementById("canvas");
 let ctx=canvas.getContext("2d");
 let modalVisualizerCanvas=document.getElementById("modalVisualizerCanvas");
@@ -393,8 +520,8 @@ let modalVisualizerCtx=modalVisualizerCanvas.getContext("2d");
 let audioContext=null,analyser=null,sourceNode=null,audioDestination=null,freqData=null,audioReady=false;
 const audioData={bass:0,mid:0,treble:0,energy:0,beat:0,previousBass:0};
 let audioEl=document.getElementById("audio");
-let transcriptWords=[],subtitleSegments=[];
-let setupPreviewRunning=false,recordingRenderRunning=false,modalPreviewRunning=false,modalPaused=false;
+let transcriptWords=[],subtitleSegments=[],activeTranscriptIndex=-1;
+let recordingRenderRunning=false,modalPreviewRunning=false,modalPaused=false;
 let mediaRecorder=null,recordingChunks=[],recordingStream=null,recordedBlob=null,recordedURL=null,recordingFinalizing=false;
 
 
@@ -588,8 +715,7 @@ function applyQuality(preset,save=true){
     visualizerSettings.fps=preset.fps;
     visualizerSettings.videoBitrate=preset.videoBitrate;
     visualizerSettings.audioBitrate=preset.audioBitrate;
-    [canvas,previewCanvas,modalVisualizerCanvas].forEach(c=>{c.width=preset.width;c.height=preset.height});
-    $("previewResolution").textContent=`${preset.width} × ${preset.height} • ${preset.fps} FPS`;
+    [canvas,modalVisualizerCanvas].forEach(c=>{c.width=preset.width;c.height=preset.height});
     $("recordResolution").textContent=`${preset.width} × ${preset.height} • ${preset.fps} FPS`;
     if(save)saveSettings();
 }
@@ -625,6 +751,149 @@ function syncBackgroundStudioUI(){
     if(visualizerSettings.backgroundImageObject){
         updateCustomImageUI(visualizerSettings.backgroundImageObject,visualizerSettings.backgroundImageName||"Custom background");
     }
+}
+
+function syncDesignChoiceUI(){
+    document.querySelectorAll("[data-preset]").forEach(button=>button.classList.toggle("active",button.dataset.preset===visualizerSettings.visualizerPreset));
+    document.querySelectorAll("[data-palette]").forEach(button=>button.classList.toggle("active",button.dataset.palette===visualizerSettings.colorPreset));
+    document.querySelectorAll("[data-quality]").forEach(button=>button.classList.toggle("active",button.dataset.quality===visualizerSettings.quality));
+    document.querySelectorAll("[data-style]").forEach(button=>button.classList.toggle("active",button.dataset.style===visualizerSettings.subtitleStyle));
+    document.querySelectorAll("[data-subtitle-language]").forEach(button=>{
+        const selected=!!visualizerSettings.transcriptionLanguagePreference&&button.dataset.subtitleLanguage===visualizerSettings.transcriptionLanguagePreference;
+        button.classList.toggle("active",selected);button.setAttribute("aria-pressed",String(selected));
+    });
+    document.querySelectorAll("[data-size]").forEach(button=>button.classList.toggle("active",Number(button.dataset.sizeValue||({small:38,medium:52,large:68}[button.dataset.size]))===Number(visualizerSettings.subtitleSize)));
+    document.querySelectorAll("[data-position]").forEach(button=>button.classList.toggle("active",button.dataset.position===(visualizerSettings.subtitleY<1400?"center":"lower")));
+    document.querySelectorAll("[data-words]").forEach(button=>button.classList.toggle("active",Number(visualizerSettings.wordsPerLine)===( {few:3,some:5,many:7}[button.dataset.words] )));
+    $("titleTextChoice").value=visualizerSettings.titleText;
+    $("subtitleTextChoice").value=visualizerSettings.subtitleText;
+    updateSubtitlePreview();
+}
+function updateSubtitlePreview(){
+    const stage=$("subtitlePreviewStage");
+    if(!stage)return;
+    const size=Number(visualizerSettings.subtitleSize);
+    const language=["pa","hi","en"].includes(visualizerSettings.subtitleLanguage)?visualizerSettings.subtitleLanguage:"en";
+    const samples={
+        pa:["ਸਤਿਨਾਮ","ਵਾਹਿਗੁਰੂ"],
+        hi:["प्रभु का","नाम सुंदर"],
+        en:["The light","within"]
+    };
+    const languages={pa:"Punjabi",hi:"Hindi",en:"English"};
+    stage.dataset.style=visualizerSettings.subtitleStyle;
+    stage.dataset.position=visualizerSettings.subtitleY<1400?"center":"lower";
+    stage.style.setProperty("--preview-highlight",visualizerSettings.highlightColor);
+    stage.style.setProperty("--preview-size",`${Math.round(size*.42)}px`);
+    stage.style.fontFamily=getSubtitleFontStack(language);
+    $("subtitlePreviewCaption").style.fontSize="var(--preview-size)";
+    $("subtitlePreviewCaption").replaceChildren(...samples[language].map((word,index)=>{
+        const span=document.createElement("span");span.textContent=word;if(index===samples[language].length-1)span.className="active";return span;
+    }));
+    $("subtitlePreviewLabel").textContent=`Subtitle preview · ${languages[language]||languages.en}`;
+}
+function detectSubtitleLanguage(text){
+    if(/[\u0A00-\u0A7F]/u.test(text))return"pa";
+    if(/[\u0900-\u097F]/u.test(text))return"hi";
+    return"en";
+}
+function getSubtitleFontStack(language=visualizerSettings.subtitleLanguage){
+    if(language==="pa")return '"Noto Sans Gurmukhi","Raavi","Gurmukhi MN",system-ui,sans-serif';
+    if(language==="hi")return '"Noto Sans Devanagari","Nirmala UI","Kohinoor Devanagari",system-ui,sans-serif';
+    return 'Inter,"Segoe UI",system-ui,sans-serif';
+}
+function syncSubtitleLanguage(text=""){
+    const selected=$("transcriptionLanguage").value;
+    visualizerSettings.transcriptionLanguagePreference=selected;
+    visualizerSettings.subtitleLanguage=selected||detectSubtitleLanguage(text);
+    const names={pa:"Punjabi",hi:"Hindi",en:"English"};
+    $("subtitleLanguageStatus").textContent=selected?`Subtitle language: ${names[selected]}.`:(text?`Detected automatically: ${names[visualizerSettings.subtitleLanguage]}.`:"Language will be detected automatically from the transcript.");
+    updateSubtitlePreview();
+    saveSettings();
+}
+
+function setupDesignControls(){
+    const moveToSlot=(selector,slotId)=>{
+        const element=document.querySelector(selector),slot=$(slotId);
+        if(element&&slot)slot.appendChild(element);
+    };
+    moveToSlot("#backgroundThemeGrid","designThemeSlot");
+    moveToSlot("#customBackgroundDrop","designImageSlot");
+    moveToSlot("#customImageInfo","designImageSlot");
+    moveToSlot("#backgroundAnimationGrid","designAnimationSlot");
+
+    setControl("transcriptionLanguage",visualizerSettings.transcriptionLanguagePreference||"");
+    $("transcriptionLanguage").addEventListener("change",()=>syncSubtitleLanguage(transcriptWords.map(word=>word.text).join(" ")));
+    document.querySelectorAll("[data-subtitle-language]").forEach(button=>button.addEventListener("click",()=>{
+        const language=button.dataset.subtitleLanguage==="auto"?"":button.dataset.subtitleLanguage;
+        setControl("transcriptionLanguage",language);
+        $("transcriptionLanguage").dispatchEvent(new Event("change",{bubbles:true}));
+        syncDesignChoiceUI();
+    }));
+
+    document.querySelectorAll("[data-design-tab]").forEach(tab=>tab.addEventListener("click",()=>{
+        const name=tab.dataset.designTab;
+        document.querySelectorAll("[data-design-tab]").forEach(item=>{
+            const selected=item===tab;
+            item.classList.toggle("active",selected);item.setAttribute("aria-selected",String(selected));
+        });
+        document.querySelectorAll(".design-panel").forEach(panel=>{
+            const selected=panel.id===`designPanel${name[0].toUpperCase()}${name.slice(1)}`;
+            panel.classList.toggle("active",selected);panel.hidden=!selected;
+        });
+    }));
+
+    const visualizerPresets={
+        sacred:{ballStyle:"orb",lineStyle:"wave",glow:45,trail:25,particles:28,beatReaction:55,enableGlow:true,enableTrails:true,enableParticles:true,enableRings:true},
+        pulse:{ballStyle:"ring",lineStyle:"wave",glow:60,trail:35,particles:18,beatReaction:85,enableGlow:true,enableTrails:true,enableParticles:true,enableRings:true},
+        minimal:{ballStyle:"solid",lineStyle:"smooth",glow:15,trail:10,particles:8,beatReaction:30,enableGlow:false,enableTrails:false,enableParticles:false,enableRings:false},
+        spectrum:{ballStyle:"orb",lineStyle:"bars",glow:35,trail:18,particles:20,beatReaction:55,enableGlow:true,enableTrails:true,enableParticles:true,enableRings:true},
+        dream:{ballStyle:"diamond",lineStyle:"smooth",glow:40,trail:55,particles:48,beatReaction:42,enableGlow:true,enableTrails:true,enableParticles:true,enableRings:true},
+        classic:{ballStyle:"orb",lineStyle:"wave",glow:30,trail:20,particles:15,beatReaction:45,enableGlow:true,enableTrails:true,enableParticles:true,enableRings:true}
+    };
+    document.querySelectorAll("[data-preset]").forEach(button=>button.addEventListener("click",()=>{
+        visualizerSettings.visualizerPreset=button.dataset.preset;
+        Object.assign(visualizerSettings,visualizerPresets[button.dataset.preset]);
+        saveSettings();syncDesignChoiceUI();
+    }));
+
+    const palettes={
+        gold:["#FFD166","#FFF4C2"],rose:["#FF7B9C","#FFE0E8"],ocean:["#40C9E8","#C4F5FF"],
+        violet:["#A98BFF","#E4DBFF"],forest:["#63D69A","#D3FFE5"],ember:["#FF784F","#FFE0A8"]
+    };
+    document.querySelectorAll("[data-palette]").forEach(button=>button.addEventListener("click",()=>{
+        const [primary,secondary]=palettes[button.dataset.palette];
+        Object.assign(visualizerSettings,{colorPreset:button.dataset.palette,primaryColor:primary,secondaryColor:secondary,highlightColor:primary});
+        ["primaryColor","secondaryColor","highlightColor"].forEach(id=>setControl(id,visualizerSettings[id]));
+        saveSettings();syncDesignChoiceUI();
+    }));
+
+    document.querySelectorAll("[data-style]").forEach(button=>button.addEventListener("click",()=>{
+        visualizerSettings.subtitleStyle=button.dataset.style;setControl("subtitleStyle",button.dataset.style);saveSettings();syncDesignChoiceUI();
+    }));
+    const sizeValues={small:38,medium:52,large:68};
+    document.querySelectorAll("[data-size]").forEach(button=>button.addEventListener("click",()=>{
+        visualizerSettings.subtitleSize=sizeValues[button.dataset.size];setControl("subtitleSize",visualizerSettings.subtitleSize);
+        $("subtitleSizeValue").textContent=visualizerSettings.subtitleSize;saveSettings();syncDesignChoiceUI();
+    }));
+    document.querySelectorAll("[data-position]").forEach(button=>button.addEventListener("click",()=>{
+        visualizerSettings.subtitleY=button.dataset.position==="center"?1200:1500;setControl("subtitleY",visualizerSettings.subtitleY);
+        $("subtitleYValue").textContent=visualizerSettings.subtitleY;saveSettings();syncDesignChoiceUI();
+    }));
+    const wordCounts={few:3,some:5,many:7};
+    document.querySelectorAll("[data-words]").forEach(button=>button.addEventListener("click",()=>{
+        visualizerSettings.wordsPerLine=wordCounts[button.dataset.words];setControl("wordsPerLine",visualizerSettings.wordsPerLine);saveSettings();syncDesignChoiceUI();
+        if(transcriptWords.length){buildSubtitleTimeline();}
+    }));
+    [["titleTextChoice","titleText"],["subtitleTextChoice","subtitleText"]].forEach(([visibleId,setting])=>$(visibleId).addEventListener("input",()=>{
+        visualizerSettings[setting]=$(visibleId).value;setControl(setting,visualizerSettings[setting]);saveSettings();updateSubtitlePreview();
+    }));
+    document.querySelectorAll("[data-quality]").forEach(button=>button.addEventListener("click",()=>{
+        setControl("videoQuality",button.dataset.quality);
+        $("videoQuality").dispatchEvent(new Event("change",{bubbles:true}));
+        syncDesignChoiceUI();
+    }));
+    syncDesignChoiceUI();
+    syncSubtitleLanguage(transcriptWords.map(word=>word.text).join(" "));
 }
 
 document.querySelectorAll(".theme-card").forEach(card=>{
@@ -775,12 +1044,14 @@ function drawBackground(ctx,W,H,data){
 ========================================================= */
 
 async function setupAudio(){
-    if(audioReady)return;
-    audioContext=new (window.AudioContext||window.webkitAudioContext)();
-    analyser=audioContext.createAnalyser();analyser.fftSize=512;analyser.smoothingTimeConstant=.82;
-    freqData=new Uint8Array(analyser.frequencyBinCount);
-    sourceNode=audioContext.createMediaElementSource(audioEl);
-    sourceNode.connect(analyser);analyser.connect(audioContext.destination);
+    if(!audioContext){
+        audioContext=new (window.AudioContext||window.webkitAudioContext)();
+        analyser=audioContext.createAnalyser();analyser.fftSize=512;analyser.smoothingTimeConstant=.82;
+        freqData=new Uint8Array(analyser.frequencyBinCount);
+        sourceNode=audioContext.createMediaElementSource(audioEl);
+        sourceNode.connect(analyser);analyser.connect(audioContext.destination);
+    }
+    if(audioContext.state==="suspended")await audioContext.resume();
     audioReady=true;
 }
 function analyzeAudio(){
@@ -809,22 +1080,22 @@ function getRealAudioData(){return audioData}
 ========================================================= */
 
 function updateBeatEngine(data){
-    const strong=data.beat>.65||data.bass-audioData.previousBass>.18;
+    const strong=data.beat>.42||data.bass-visualState.lastBeat>.12;
     if(strong&&visualState.beatImpulse<.3){
         visualState.beatImpulse=1;
-        visualState.beatScale=1+.16*(visualizerSettings.beatReaction/50);
-        visualState.beatRotation=(Math.random()-.5)*.025;
+        visualState.beatScale=1+.09*(visualizerSettings.beatReaction/50);
+        visualState.beatRotation=(Math.random()-.5)*.012;
         if(visualizerSettings.enableRings&&visualizerSettings.beatRings)createShockwave();
         if(visualizerSettings.enableParticles)createBurstParticles();
         if(visualizerSettings.emojiAccents)createEmojiBurst();
     }
-    visualState.beatImpulse*=.92;
-    visualState.beatScale+=(1-visualState.beatScale)*.12;
-    visualState.beatRotation*=.92;
+    visualState.beatImpulse*=.96;
+    visualState.beatScale+=(1-visualState.beatScale)*.055;
+    visualState.beatRotation*=.96;
     visualState.lastBeat=data.bass;
 }
-function createShockwave(){visualState.shockwaves.push({r:40,a:.9,w:5})}
-function updateShockwaves(){visualState.shockwaves.forEach(s=>{s.r+=12;s.a*=.93;s.w*=.98});visualState.shockwaves=visualState.shockwaves.filter(s=>s.a>.025)}
+function createShockwave(){if(visualState.shockwaves.length<3)visualState.shockwaves.push({r:40,a:.72,w:4})}
+function updateShockwaves(){visualState.shockwaves.forEach(s=>{s.r+=4;s.a*=.975;s.w*=.995});visualState.shockwaves=visualState.shockwaves.filter(s=>s.a>.025)}
 function drawShockwaves(c){
     visualState.shockwaves.forEach(s=>{
         c.save();c.strokeStyle=hexToRgba(visualizerSettings.primaryColor,s.a);c.lineWidth=s.w;c.shadowBlur=18;c.shadowColor=visualizerSettings.primaryColor;
@@ -844,13 +1115,26 @@ function drawBurstParticles(c){
     visualState.bursts.forEach(p=>{const x=W/2+p.x*18,y=H*.52+p.y*18;c.save();c.globalAlpha=p.a;c.fillStyle=visualizerSettings.primaryColor;c.shadowBlur=12;c.shadowColor=visualizerSettings.primaryColor;c.beginPath();c.arc(x,y,p.r,0,Math.PI*2);c.fill();c.restore()});
 }
 function createEmojiBurst(){
-    const icons=["✨","✦","ੴ","✧","🪯"];
-    for(let i=0;i<3;i++)visualState.emojis.push({x:Math.random()*2-1,y:0,vx:(Math.random()-.5)*.02,vy:-.015-Math.random()*.015,a:1,icon:icons[Math.floor(Math.random()*icons.length)],size:25+Math.random()*25});
+    const punjabi=["ੴ"];
+    const symbols=["✨","✦","🪯","💛"];
+    const icons=visualizerSettings.subtitleLanguage==="pa"?[...punjabi,...symbols]:[...symbols,"ੴ"];
+    if(visualState.emojis.length>=3)return;
+    const icon=icons[Math.floor(Math.random()*icons.length)],isWord=/[\u0A00-\u0A7F]/u.test(icon);
+    visualState.emojis.push({x:Math.random()*1.2-.6,y:0,vx:(Math.random()-.5)*.003,vy:-.0015-Math.random()*.001,a:1,scale:.45,icon,size:isWord?24:28});
 }
-function updateEmojiBursts(){visualState.emojis.forEach(e=>{e.x+=e.vx;e.y+=e.vy;e.a*=.975});visualState.emojis=visualState.emojis.filter(e=>e.a>.03)}
+function updateEmojiBursts(){visualState.emojis.forEach(e=>{e.x+=e.vx;e.y+=e.vy;e.a*=.99;e.scale=Math.min(1,e.scale+.045)});visualState.emojis=visualState.emojis.filter(e=>e.a>.035)}
 function drawEmojiBursts(c){
     const W=c.canvas.width,H=c.canvas.height;
-    visualState.emojis.forEach(e=>{c.save();c.globalAlpha=e.a;c.font=`${e.size}px serif`;c.textAlign="center";c.fillText(e.icon,W/2+e.x*W*.28,H*.52+e.y*H);c.restore()});
+    visualState.emojis.forEach(e=>{
+        const x=W/2+e.x*W*.34,y=H*.55+e.y*H,r=e.size*(/[\u0A00-\u0A7F]/u.test(e.icon)?1.75:1.05);
+        c.save();c.globalAlpha=e.a;c.translate(x,y);c.scale(e.scale,e.scale);
+        c.fillStyle=hexToRgba(visualizerSettings.primaryColor,.2);c.strokeStyle=hexToRgba(visualizerSettings.secondaryColor,.78);
+        c.lineWidth=2;c.shadowBlur=18;c.shadowColor=visualizerSettings.primaryColor;
+        c.beginPath();c.arc(0,0,r,0,Math.PI*2);c.fill();c.stroke();
+        c.font=`700 ${e.size}px ${/[\u0A00-\u0A7F]/u.test(e.icon)?getSubtitleFontStack("pa"):"system-ui,sans-serif"}`;
+        c.textAlign="center";c.textBaseline="middle";c.fillStyle=visualizerSettings.subtitleLanguage==="pa"?visualizerSettings.secondaryColor:"#fff4c2";c.shadowBlur=8;c.fillText(e.icon,0,0);
+        c.restore();
+    });
 }
 
 
@@ -860,8 +1144,8 @@ function drawEmojiBursts(c){
 
 function getLineY(i,n,H,data){
     const x=i/(n-1),t=visualState.time;
-    const wave=Math.sin(x*18+t*1.8)*data.mid*.035*H;
-    const wave2=Math.sin(x*42-t*1.2)*data.treble*.012*H;
+    const wave=Math.sin(x*18+t*.85)*data.mid*.025*H;
+    const wave2=Math.sin(x*42-t*.55)*data.treble*.008*H;
     const center=H*.52;
     return center+wave+wave2;
 }
@@ -869,10 +1153,10 @@ function drawLine(c,W,H,data){
     const n=90,center=H*.52;
     c.save();c.translate(0,visualState.beatRotation*H);
     if(visualizerSettings.enableGlow){c.shadowBlur=20+visualizerSettings.glow*.35;c.shadowColor=visualizerSettings.primaryColor}
-    c.strokeStyle=visualizerSettings.primaryColor;c.lineWidth=3+data.bass*5*(visualizerSettings.bassLine/50);
+    c.strokeStyle=visualizerSettings.primaryColor;c.lineWidth=3+data.bass*3.5*(visualizerSettings.bassLine/50);
     if(visualizerSettings.lineStyle==="bars"){
         c.shadowBlur=0;
-        for(let i=0;i<45;i++){const x=(i+.5)/45*W;const v=freqData?freqData[Math.floor(i/freqData.length*freqData.length)]/255:data.mid;const h=25+v*220;c.fillStyle=hexToRgba(visualizerSettings.primaryColor,.65);c.fillRect(x-3,center-h/2,6,h)}
+        for(let i=0;i<45;i++){const x=(i+.5)/45*W;const v=freqData?freqData[Math.floor(i/freqData.length*freqData.length)]/255:data.mid;const h=20+v*145;c.fillStyle=hexToRgba(visualizerSettings.primaryColor,.65);c.fillRect(x-3,center-h/2,6,h)}
     }else{
         c.beginPath();
         for(let i=0;i<n;i++){const x=i/(n-1)*W,y=getLineY(i,n,H,data);i?c.lineTo(x,y):c.moveTo(x,y)}
@@ -888,7 +1172,7 @@ function drawLine(c,W,H,data){
 
 function drawBall(c,W,H,data){
     const base=Math.min(W,H)*.055*(visualizerSettings.ballSize/45);
-    const r=base*(1+data.bass*(visualizerSettings.bassBall/45)*.7)*visualState.beatScale;
+    const r=base*(1+data.bass*(visualizerSettings.bassBall/45)*.42)*visualState.beatScale;
     const x=W/2,y=H*.52;
     if(visualizerSettings.enableTrails&&visualizerSettings.trail>0)drawBallTrail(c,x,y,r);
     c.save();c.translate(x,y);c.rotate(visualState.beatRotation);
@@ -913,8 +1197,8 @@ function drawBallTrail(c,x,y,r){
     c.restore();
 }
 function drawPulseRings(c,x,y,r,data){
-    const rr=r*(1.6+data.energy*.8+visualState.beatImpulse*.9);
-    c.save();c.strokeStyle=hexToRgba(visualizerSettings.secondaryColor,.18+visualState.beatImpulse*.4);c.lineWidth=2;c.beginPath();c.arc(x,y,rr,0,Math.PI*2);c.stroke();c.restore();
+    const rr=r*(1.6+data.energy*.45+visualState.beatImpulse*.45);
+    c.save();c.strokeStyle=hexToRgba(visualizerSettings.secondaryColor,.14+visualState.beatImpulse*.25);c.lineWidth=2;c.beginPath();c.arc(x,y,rr,0,Math.PI*2);c.stroke();c.restore();
 }
 
 
@@ -951,7 +1235,7 @@ function drawVideoText(c,W,H){
 }
 function getCurrentSegment(time){
     for(const s of subtitleSegments)if(time>=s.start&&time<=s.end)return s;
-    return subtitleSegments.length?subtitleSegments[subtitleSegments.length-1]:null;
+    return null;
 }
 function getCurrentWordIndex(seg,time){
     if(!seg)return -1;
@@ -968,22 +1252,43 @@ function renderSubtitleWords(c,W,H,seg,time,data){
     const active=getCurrentWordIndex(seg,time);
     const text=words.map(w=>w.text).join(" ");
     const size=visualizerSettings.subtitleSize*(W/1080);
-    c.save();c.textAlign="center";c.font=`700 ${size}px "${visualizerSettings.subtitleFont}",system-ui`;
-    if(visualizerSettings.subtitleShadow){c.shadowBlur=visualizerSettings.subtitleGlow;c.shadowColor=visualizerSettings.highlightColor}
+    c.save();c.textAlign="center";c.font=`700 ${size}px ${getSubtitleFontStack()}`;
+    const style=visualizerSettings.subtitleStyle;
+    if(visualizerSettings.subtitleShadow&&style!=="clean"&&style!=="outline"){
+        c.shadowBlur=style==="neon"?visualizerSettings.subtitleGlow*2.5:style==="glow"?visualizerSettings.subtitleGlow*1.8:visualizerSettings.subtitleGlow;
+        c.shadowColor=visualizerSettings.highlightColor;
+    }
     const widths=words.map(w=>c.measureText(w.text+" ").width),total=widths.reduce((a,b)=>a+b,0);
     let x=W/2-total/2;
     for(let i=0;i<words.length;i++){
         const w=words[i],ww=widths[i];
-        c.fillStyle=i===active?visualizerSettings.highlightColor:visualizerSettings.subtitleColor;
-        const scale=i===active&&visualizerSettings.subtitleBeat?(1+data.beat*.08):1;
-        c.save();c.translate(x+ww/2,visualizerSettings.subtitleY*(H/1920));c.scale(scale,scale);c.fillText(w.text,0,0);c.restore();x+=ww;
+        const isActive=i===active;
+        if(style==="gold"){
+            const gradient=c.createLinearGradient(x,visualizerSettings.subtitleY*(H/1920)-size/2,x+ww,visualizerSettings.subtitleY*(H/1920)+size/2);
+            gradient.addColorStop(0,visualizerSettings.highlightColor);gradient.addColorStop(.5,visualizerSettings.secondaryColor);gradient.addColorStop(1,visualizerSettings.highlightColor);c.fillStyle=gradient;
+        }else c.fillStyle=isActive&&style!=="clean"?visualizerSettings.highlightColor:(style==="neon"?visualizerSettings.secondaryColor:visualizerSettings.subtitleColor);
+        const scale=i===active&&style==="karaoke"&&visualizerSettings.subtitleBeat?(1+data.beat*.08):1;
+        c.save();c.translate(x+ww/2,visualizerSettings.subtitleY*(H/1920));c.scale(scale,scale);
+        if(style==="outline"){c.lineJoin="round";c.lineWidth=Math.max(2,size*.055);c.strokeStyle=hexToRgba("#08080c",.96);c.strokeText(w.text,0,0)}
+        c.fillText(w.text,0,0);c.restore();x+=ww;
     }
     c.restore();
 }
 function drawPreviewSubtitle(c,W,H,data){
-    c.save();c.textAlign="center";c.font=`700 ${visualizerSettings.subtitleSize*(W/1080)}px "${visualizerSettings.subtitleFont}",system-ui`;
-    c.fillStyle=visualizerSettings.subtitleColor;c.shadowBlur=visualizerSettings.subtitleGlow;c.shadowColor=visualizerSettings.highlightColor;
-    c.fillText(visualizerSettings.subtitleText,W/2,visualizerSettings.subtitleY*(H/1920));c.restore();
+    c.save();c.textAlign="center";c.font=`700 ${visualizerSettings.subtitleSize*(W/1080)}px ${getSubtitleFontStack()}`;
+    const style=visualizerSettings.subtitleStyle,size=visualizerSettings.subtitleSize*(W/1080),x=W/2,y=visualizerSettings.subtitleY*(H/1920),width=c.measureText(visualizerSettings.subtitleText).width;
+    c.fillStyle=visualizerSettings.subtitleColor;
+    if(style==="gold"){
+        const gradient=c.createLinearGradient(x-width/2,y-size/2,x+width/2,y+size/2);
+        gradient.addColorStop(0,visualizerSettings.highlightColor);gradient.addColorStop(.5,visualizerSettings.secondaryColor);gradient.addColorStop(1,visualizerSettings.highlightColor);c.fillStyle=gradient;
+    }else if(style==="neon")c.fillStyle=visualizerSettings.secondaryColor;
+    if(style==="neon")c.shadowBlur=visualizerSettings.subtitleGlow*2.5;
+    else if(style==="glow")c.shadowBlur=visualizerSettings.subtitleGlow*1.8;
+    else if(style==="clean"||style==="outline")c.shadowBlur=0;
+    else c.shadowBlur=visualizerSettings.subtitleGlow;
+    c.shadowColor=visualizerSettings.highlightColor;
+    if(style==="outline"){c.lineJoin="round";c.lineWidth=Math.max(2,size*.055);c.strokeStyle=hexToRgba("#08080c",.96);c.strokeText(visualizerSettings.subtitleText,x,y)}
+    c.fillText(visualizerSettings.subtitleText,x,y);c.restore();
 }
 
 
@@ -994,7 +1299,7 @@ function drawPreviewSubtitle(c,W,H,data){
 function renderVisualizer(renderCtx,renderCanvas,data,mode){
     if(!renderCtx||!renderCanvas)return;
     const W=renderCanvas.width,H=renderCanvas.height;
-    visualState.time+=1/(mode==="recording"?visualizerSettings.fps:60);
+    visualState.time+=.65/(mode==="recording"?visualizerSettings.fps:60);
     updateBeatEngine(data);
     renderCtx.clearRect(0,0,W,H);
     drawBackground(renderCtx,W,H,data);
@@ -1009,17 +1314,6 @@ function renderVisualizer(renderCtx,renderCanvas,data,mode){
    PREVIEW LOOPS
 ========================================================= */
 
-function startSetupPreview(){
-    if(setupPreviewRunning)return;
-    setupPreviewRunning=true;
-    function frame(){
-        const t=performance.now()/1000;
-        const previewData={bass:.38+Math.sin(t*2)*.22,mid:.35+Math.sin(t*1.3)*.1,treble:.4+Math.sin(t*3)*.1,energy:.42,beat:Math.pow(Math.max(0,Math.sin(t*4)),12)};
-        renderVisualizer(previewCtx,previewCanvas,previewData,"preview");
-        requestAnimationFrame(frame);
-    }
-    frame();
-}
 function startRecordingRenderLoop(){
     if(recordingRenderRunning)return;
     recordingRenderRunning=true;
@@ -1078,11 +1372,12 @@ $("modalPlayPause").addEventListener("click",()=>{
 
 $("audioFile").addEventListener("change",e=>{
     const file=e.target.files[0];if(!file)return;
-    audioEl.src=URL.createObjectURL(file);audioEl.load();
+    audioEl.pause();audioEl.src=URL.createObjectURL(file);audioEl.load();
     $("audioStatus").textContent=`Loaded: ${file.name}`;
-    audioReady=false;
-    transcriptWords=[];subtitleSegments=[];
+    transcriptWords=[];subtitleSegments=[];activeTranscriptIndex=-1;
     $("transcript").textContent="Ready for transcription.";
+    $("transcriptionStatus").textContent="Ready.";
+    syncSubtitleLanguage("");
 });
 audioEl.addEventListener("play",async()=>{try{await setupAudio();await audioContext.resume()}catch(e){console.error(e)}});
 audioEl.addEventListener("ended",()=>{if(mediaRecorder&&mediaRecorder.state!=="inactive"){recordingFinalizing=true;mediaRecorder.stop()}});
@@ -1123,24 +1418,37 @@ async function transcribeWithGemini(){
         const words=[];
         for(const step of interaction.steps||[])for(const content of step.content||[])for(const ann of content.annotations||[]){
             if(ann.type==="word_info"){
-                const start=offsetToSeconds(ann.start_offset??ann.startOffset??0),end=offsetToSeconds(ann.end_offset??ann.endOffset??start+.4);
-                words.push({text:ann.text||"",start,end});
+                const start=offsetToSeconds(ann.start_offset??ann.startOffset),endValue=ann.end_offset??ann.endOffset;
+                const end=endValue==null?start+.4:offsetToSeconds(endValue);
+                const text=String(ann.text||"").trim();
+                if(text&&Number.isFinite(start)&&Number.isFinite(end)&&end>=start)words.push({text,start,end});
             }
         }
+        if($("audioFile").files[0]!==file)throw new Error("The selected audio changed. Please transcribe the current track.");
         transcriptWords=words.sort((a,b)=>a.start-b.start);
+        syncSubtitleLanguage(transcriptWords.map(word=>word.text).join(" "));
         buildSubtitleTimeline();
         renderTranscriptText();
-        $("transcriptionStatus").textContent=`Transcribed ${transcriptWords.length} words.`;
+        $("transcriptionStatus").textContent=transcriptWords.length?`Transcribed ${transcriptWords.length} words.`:"No word timestamps were returned. Try another audio file.";
     }catch(err){
         console.error(err);$("transcriptionStatus").textContent="Transcription failed: "+err.message;
     }finally{$("transcribeBtn").disabled=false}
 }
 function offsetToSeconds(v){
-    if(typeof v==="number")return v;
-    if(!v)return 0;
-    const s=String(v);
-    if(/^\d+:\d+(\.\d+)?$/.test(s)){const p=s.split(":");return Number(p[0])*60+Number(p[1])}
-    return Number(s)||0;
+    if(typeof v==="number")return Number.isFinite(v)?v:NaN;
+    if(v&&typeof v==="object"){
+        const seconds=Number(v.seconds??0),nanos=Number(v.nanos??0);
+        return Number.isFinite(seconds)&&Number.isFinite(nanos)?seconds+nanos/1e9:NaN;
+    }
+    if(v==null||v==="")return NaN;
+    const s=String(v).trim();
+    if(/^\d+(?:\.\d+)?$/.test(s))return Number(s);
+    if(/^\d+(?::\d{1,2}){1,2}(?:\.\d+)?$/.test(s))return s.split(":").reduce((total,part)=>total*60+Number(part),0);
+    const clock=s.match(/^(?:(\d+)m)?(?:(\d+(?:\.\d+)?)s)?$/i);
+    if(clock&&(clock[1]||clock[2]))return Number(clock[1]||0)*60+Number(clock[2]||0);
+    const unit=s.match(/^(\d+(?:\.\d+)?)(ms|us|ns)$/i);
+    if(unit)return Number(unit[1])*({ms:.001,us:.000001,ns:.000000001}[unit[2].toLowerCase()]);
+    return NaN;
 }
 function buildSubtitleTimeline(){
     subtitleSegments=[];const maxWords=Math.max(1,Number(visualizerSettings.wordsPerLine)||5);
@@ -1153,14 +1461,21 @@ function buildSubtitleTimeline(){
     }
 }
 function renderTranscriptText(){
+    activeTranscriptIndex=-1;
     $("transcript").innerHTML=transcriptWords.length?transcriptWords.map((w,i)=>`<span class="word" data-index="${i}">${escapeHtml(w.text)}</span>`).join(" "):"No word timestamps returned.";
 }
 function escapeHtml(s){return String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
 function updateTranscriptHighlight(){
     const t=audioEl.currentTime||0;
-    document.querySelectorAll(".word").forEach(el=>el.classList.remove("active"));
     let idx=-1;for(let i=0;i<transcriptWords.length;i++)if(t>=transcriptWords[i].start&&t<=transcriptWords[i].end){idx=i;break}
-    if(idx>=0){const el=document.querySelector(`.word[data-index="${idx}"]`);if(el)el.classList.add("active")}
+    if(idx!==activeTranscriptIndex){
+        const transcript=$("transcript");
+        const previous=transcript.querySelector(`.word[data-index="${activeTranscriptIndex}"]`);
+        if(previous)previous.classList.remove("active");
+        const current=transcript.querySelector(`.word[data-index="${idx}"]`);
+        if(current){current.classList.add("active");current.scrollIntoView({block:"nearest",behavior:"smooth"})}
+        activeTranscriptIndex=idx;
+    }
     requestAnimationFrame(updateTranscriptHighlight);
 }
 $("transcribeBtn").addEventListener("click",transcribeWithGemini);
@@ -1237,6 +1552,7 @@ $("downloadBtn").addEventListener("click",()=>{
 enhanceSelects();
 restoreSettings();
 applySettingsToControls();
+setupDesignControls();
 startRecordingRenderLoop();
 updateTranscriptHighlight();
 </script>
