@@ -16,7 +16,7 @@ button:focus-visible,.custom-select-trigger:focus-visible,.switch:focus-within,i
 .topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:18px;position:sticky;top:12px;z-index:30;background:#101016ee;backdrop-filter:blur(12px);border:1px solid var(--border);border-radius:14px;padding:12px 18px;box-shadow:0 10px 30px #0006}
 .brand{display:flex;align-items:center;gap:12px}.brand-mark{width:44px;height:44px;border-radius:13px;display:grid;place-items:center;background:linear-gradient(145deg,#ffd166,#8b6417);color:#090909;font-size:23px;box-shadow:0 0 28px #ffd16625}.brand h1{margin:0;font-size:20px}.brand p{margin:3px 0 0;color:var(--muted);font-size:11px}
 .btn{border:1px solid var(--border);border-radius:10px;padding:10px 14px;background:#15151d;color:#fff}.btn:hover{border-color:#555}.btn.primary{background:linear-gradient(135deg,#ffd166,#e2a82f);color:#111;border-color:#ffd166;font-weight:800}.btn.danger{border-color:#633737;color:#ff9b9b}
-.layout{display:grid;grid-template-columns:1fr;max-width:900px;margin:0 auto}.panel{background:linear-gradient(145deg,#111117f5,#0b0b10f5);border:1px solid var(--border);border-radius:18px;box-shadow:0 20px 60px #0008}.settings{padding:18px}.settings-columns{column-count:2;column-gap:22px}.preview-panel{padding:18px;display:flex;flex-direction:column;min-height:calc(100vh - 105px)}
+.layout{display:grid;grid-template-columns:1fr;max-width:900px;margin:0 auto}.panel{background:linear-gradient(145deg,#111117f5,#0b0b10f5);border:1px solid var(--border);border-radius:18px;box-shadow:0 20px 60px #0008}.settings{padding:18px}.settings-columns{column-count:2;column-gap:22px}.preview-panel{padding:18px;display:none;flex-direction:column;min-height:calc(100vh - 105px)}
 .section{padding-bottom:18px;margin-bottom:18px;border-bottom:1px solid #23232d;break-inside:avoid;-webkit-column-break-inside:avoid;page-break-inside:avoid}.section:last-child{border-bottom:0;margin-bottom:0}.section-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:13px}.section-title h2{margin:0;font-size:14px}.section-title span{font-size:10px;color:#666;text-transform:uppercase;letter-spacing:.08em}
 label.field{display:block;color:#aaa;font-size:11px;margin:12px 0 6px}.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 select,input[type=text],input[type=password]{width:100%;background:#0a0a0f;color:#eee;border:1px solid #30303b;border-radius:9px;padding:10px 11px;outline:none}select:focus,input:focus{border-color:#ffd166}
@@ -110,6 +110,11 @@ select,input[type=text],input[type=password]{width:100%;background:#0a0a0f;color
 .record-actions{align-items:center}.record-actions .btn:disabled{opacity:.45;cursor:not-allowed}
 @media(max-width:1000px){.audio-layout{grid-template-columns:1fr}}
 @media(max-width:520px){.settings{padding:12px}.design-tab{font-size:10px;padding:10px 4px}.choice-grid,.quality-choice{grid-template-columns:repeat(2,minmax(0,1fr))}.design-panel{min-height:300px}.design-slot>.background-theme-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.design-slot>.background-animation-grid{grid-template-columns:1fr}}
+@media(orientation:landscape) and (min-width:640px){
+.layout{grid-template-columns:minmax(0,1fr) minmax(300px,380px);max-width:1300px;align-items:start;gap:18px}
+.preview-panel{display:flex;min-height:auto;position:sticky;top:88px}
+.preview-panel .canvas-shell{height:min(76vh,720px)}
+}
 </style>
 </head>
 <body>
@@ -149,6 +154,9 @@ select,input[type=text],input[type=password]{width:100%;background:#0a0a0f;color
         <button class="choice-card" data-preset="spectrum"><strong>▥ Spectrum</strong><span>Sound bars with a radiant orb</span></button>
         <button class="choice-card" data-preset="dream"><strong>◇ Dream</strong><span>Soft diamond with floating particles</span></button>
         <button class="choice-card" data-preset="classic"><strong>〰 Classic</strong><span>Balanced orb and smooth waveform</span></button>
+        <button class="choice-card" data-preset="lightning"><strong>⚡ Lightning</strong><span>Electric bolt orb with sharp flicker</span></button>
+        <button class="choice-card" data-preset="rainfall"><strong>🔵 Falling Balls</strong><span>Balls rain down in sync with the beat</span></button>
+        <button class="choice-card" data-preset="bounce"><strong>🏀 Soft Bounce</strong><span>Gentle ball bouncing with soft glow</span></button>
     </div>
     <h2 class="design-panel-heading" style="margin-top:22px">Color palette</h2><p class="design-panel-hint">Pick a ready-made set of matching colors.</p>
     <div class="choice-grid" id="colorPresetGrid">
@@ -229,6 +237,8 @@ select,input[type=text],input[type=password]{width:100%;background:#0a0a0f;color
 <option value="solid">Solid</option>
 <option value="ring">Ring</option>
 <option value="diamond">Diamond</option>
+<option value="lightning">Lightning</option>
+<option value="bounce">Bouncing</option>
 </select>
 </div>
 <div>
@@ -237,6 +247,7 @@ select,input[type=text],input[type=password]{width:100%;background:#0a0a0f;color
 <option value="wave">Wave</option>
 <option value="bars">Bars</option>
 <option value="smooth">Smooth</option>
+<option value="falling">Falling Balls</option>
 </select>
 </div>
 </div>
@@ -372,6 +383,13 @@ select,input[type=text],input[type=password]{width:100%;background:#0a0a0f;color
 <button id="continueBtn" class="btn primary">Continue to Audio →</button>
 </div>
 
+</div>
+
+<div class="panel preview-panel" id="setupPreviewPanel">
+<div class="preview-header">
+    <div><h2>Live Preview</h2><p>Shown automatically in landscape</p></div>
+</div>
+<div class="preview-wrap"><div class="canvas-shell"><canvas id="setupPreviewCanvas" width="720" height="1280"></canvas></div></div>
 </div>
 
 </div>
@@ -516,12 +534,14 @@ let canvas=document.getElementById("canvas");
 let ctx=canvas.getContext("2d");
 let modalVisualizerCanvas=document.getElementById("modalVisualizerCanvas");
 let modalVisualizerCtx=modalVisualizerCanvas.getContext("2d");
+let setupPreviewCanvas=document.getElementById("setupPreviewCanvas");
+let setupPreviewCtx=setupPreviewCanvas.getContext("2d");
 
 let audioContext=null,analyser=null,sourceNode=null,audioDestination=null,freqData=null,audioReady=false;
 const audioData={bass:0,mid:0,treble:0,energy:0,beat:0,previousBass:0};
 let audioEl=document.getElementById("audio");
 let transcriptWords=[],subtitleSegments=[],activeTranscriptIndex=-1;
-let recordingRenderRunning=false,modalPreviewRunning=false,modalPaused=false;
+let recordingRenderRunning=false,modalPreviewRunning=false,modalPaused=false,setupPreviewRunning=false;
 let mediaRecorder=null,recordingChunks=[],recordingStream=null,recordedBlob=null,recordedURL=null,recordingFinalizing=false;
 
 
@@ -715,7 +735,7 @@ function applyQuality(preset,save=true){
     visualizerSettings.fps=preset.fps;
     visualizerSettings.videoBitrate=preset.videoBitrate;
     visualizerSettings.audioBitrate=preset.audioBitrate;
-    [canvas,modalVisualizerCanvas].forEach(c=>{c.width=preset.width;c.height=preset.height});
+    [canvas,modalVisualizerCanvas,setupPreviewCanvas].forEach(c=>{c.width=preset.width;c.height=preset.height});
     $("recordResolution").textContent=`${preset.width} × ${preset.height} • ${preset.fps} FPS`;
     if(save)saveSettings();
 }
@@ -848,7 +868,10 @@ function setupDesignControls(){
         minimal:{ballStyle:"solid",lineStyle:"smooth",glow:15,trail:10,particles:8,beatReaction:30,enableGlow:false,enableTrails:false,enableParticles:false,enableRings:false},
         spectrum:{ballStyle:"orb",lineStyle:"bars",glow:35,trail:18,particles:20,beatReaction:55,enableGlow:true,enableTrails:true,enableParticles:true,enableRings:true},
         dream:{ballStyle:"diamond",lineStyle:"smooth",glow:40,trail:55,particles:48,beatReaction:42,enableGlow:true,enableTrails:true,enableParticles:true,enableRings:true},
-        classic:{ballStyle:"orb",lineStyle:"wave",glow:30,trail:20,particles:15,beatReaction:45,enableGlow:true,enableTrails:true,enableParticles:true,enableRings:true}
+        classic:{ballStyle:"orb",lineStyle:"wave",glow:30,trail:20,particles:15,beatReaction:45,enableGlow:true,enableTrails:true,enableParticles:true,enableRings:true},
+        lightning:{ballStyle:"lightning",lineStyle:"wave",glow:65,trail:15,particles:15,beatReaction:80,enableGlow:true,enableTrails:true,enableParticles:true,enableRings:true},
+        rainfall:{ballStyle:"orb",lineStyle:"falling",glow:30,trail:10,particles:20,beatReaction:50,enableGlow:true,enableTrails:false,enableParticles:true,enableRings:true},
+        bounce:{ballStyle:"bounce",lineStyle:"smooth",glow:35,trail:30,particles:20,beatReaction:60,enableGlow:true,enableTrails:true,enableParticles:true,enableRings:true}
     };
     document.querySelectorAll("[data-preset]").forEach(button=>button.addEventListener("click",()=>{
         visualizerSettings.visualizerPreset=button.dataset.preset;
@@ -1149,6 +1172,19 @@ function getLineY(i,n,H,data){
     const center=H*.52;
     return center+wave+wave2;
 }
+const fallingBallsState=Array.from({length:22},()=>({x:Math.random(),phase:Math.random(),speed:.6+Math.random()*.7}));
+function drawFallingBalls(c,W,H,data){
+    c.save();c.shadowBlur=0;
+    fallingBallsState.forEach(p=>{
+        const bin=freqData?freqData[Math.floor(p.x*freqData.length)]/255:data.mid;
+        p.phase=(p.phase+.0035*p.speed*(1+data.bass*.8))%1;
+        const y=p.phase*H,size=3+bin*9+data.treble*4;
+        c.globalAlpha=.4+bin*.6;
+        c.fillStyle=visualizerSettings.primaryColor;
+        c.beginPath();c.arc(p.x*W,y,size,0,Math.PI*2);c.fill();
+    });
+    c.restore();
+}
 function drawLine(c,W,H,data){
     const n=90,center=H*.52;
     c.save();c.translate(0,visualState.beatRotation*H);
@@ -1157,6 +1193,8 @@ function drawLine(c,W,H,data){
     if(visualizerSettings.lineStyle==="bars"){
         c.shadowBlur=0;
         for(let i=0;i<45;i++){const x=(i+.5)/45*W;const v=freqData?freqData[Math.floor(i/freqData.length*freqData.length)]/255:data.mid;const h=20+v*145;c.fillStyle=hexToRgba(visualizerSettings.primaryColor,.65);c.fillRect(x-3,center-h/2,6,h)}
+    }else if(visualizerSettings.lineStyle==="falling"){
+        drawFallingBalls(c,W,H,data);
     }else{
         c.beginPath();
         for(let i=0;i<n;i++){const x=i/(n-1)*W,y=getLineY(i,n,H,data);i?c.lineTo(x,y):c.moveTo(x,y)}
@@ -1173,7 +1211,12 @@ function drawLine(c,W,H,data){
 function drawBall(c,W,H,data){
     const base=Math.min(W,H)*.055*(visualizerSettings.ballSize/45);
     const r=base*(1+data.bass*(visualizerSettings.bassBall/45)*.42)*visualState.beatScale;
-    const x=W/2,y=H*.52;
+    const x=W/2;
+    let y=H*.52;
+    if(visualizerSettings.ballStyle==="bounce"){
+        const bounceHeight=H*.15*(.45+data.bass*.55+visualState.beatImpulse*.5);
+        y=H*.62-Math.abs(Math.sin(visualState.time*2.4))*bounceHeight;
+    }
     if(visualizerSettings.enableTrails&&visualizerSettings.trail>0)drawBallTrail(c,x,y,r);
     c.save();c.translate(x,y);c.rotate(visualState.beatRotation);
     if(visualizerSettings.enableGlow){c.shadowBlur=30+visualizerSettings.glow;c.shadowColor=visualizerSettings.primaryColor}
@@ -1183,6 +1226,25 @@ function drawBall(c,W,H,data){
         c.fillStyle=visualizerSettings.primaryColor;c.beginPath();c.moveTo(0,-r);c.lineTo(r,0);c.lineTo(0,r);c.lineTo(-r,0);c.closePath();c.fill();
     }else if(visualizerSettings.ballStyle==="solid"){
         c.fillStyle=visualizerSettings.primaryColor;c.beginPath();c.arc(0,0,r,0,Math.PI*2);c.fill();
+    }else if(visualizerSettings.ballStyle==="lightning"){
+        c.fillStyle=visualizerSettings.secondaryColor;c.beginPath();c.arc(0,0,r*.42,0,Math.PI*2);c.fill();
+        c.strokeStyle=visualizerSettings.primaryColor;c.lineWidth=1.5+data.treble*2.5;c.lineJoin="round";
+        const boltCount=6+Math.round(data.beat*3);
+        for(let i=0;i<boltCount;i++){
+            const angle=(i/boltCount)*Math.PI*2+visualState.time*.4;
+            const len=r*(1.2+data.bass*.7+Math.random()*.5);
+            c.beginPath();c.moveTo(0,0);
+            let px=0,py=0;
+            for(let s=1;s<=3;s++){
+                const segLen=len*(s/3),jitter=(Math.random()-.5)*r*.4*(s/3);
+                px=Math.cos(angle)*segLen-Math.sin(angle)*jitter;
+                py=Math.sin(angle)*segLen+Math.cos(angle)*jitter;
+                c.lineTo(px,py);
+            }
+            c.globalAlpha=.55+Math.random()*.45;
+            c.stroke();
+        }
+        c.globalAlpha=1;
     }else{
         const g=c.createRadialGradient(-r*.3,-r*.3,0,0,0,r);
         g.addColorStop(0,"#fff");g.addColorStop(.25,visualizerSettings.secondaryColor);g.addColorStop(.7,visualizerSettings.primaryColor);g.addColorStop(1,"#6e4d00");
@@ -1324,22 +1386,36 @@ function startRecordingRenderLoop(){
     }
     frame();
 }
+function getPreviewFrameData(){
+    if(audioReady&&!audioEl.paused){analyzeAudio();return getRealAudioData()}
+    const t=performance.now()/1000;
+    return{bass:.4+Math.sin(t*2)*.2,mid:.35,treble:.4,energy:.45,beat:Math.pow(Math.max(0,Math.sin(t*4)),12)};
+}
 function startModalPreview(){
     if(modalPreviewRunning)return;
     modalPreviewRunning=true;
     function frame(){
-        if(!modalPaused){
-            let data;
-            if(audioReady&&!audioEl.paused){analyzeAudio();data=getRealAudioData()}
-            else{
-                const t=performance.now()/1000;
-                data={bass:.4+Math.sin(t*2)*.2,mid:.35,treble:.4,energy:.45,beat:Math.pow(Math.max(0,Math.sin(t*4)),12)};
-            }
-            renderVisualizer(modalVisualizerCtx,modalVisualizerCanvas,data,"preview");
-        }
+        if(!modalPaused)renderVisualizer(modalVisualizerCtx,modalVisualizerCanvas,getPreviewFrameData(),"preview");
         requestAnimationFrame(frame);
     }
     frame();
+}
+function startSetupPreview(){
+    if(setupPreviewRunning)return;
+    setupPreviewRunning=true;
+    function frame(){
+        if(!setupPreviewRunning)return;
+        renderVisualizer(setupPreviewCtx,setupPreviewCanvas,getPreviewFrameData(),"preview");
+        requestAnimationFrame(frame);
+    }
+    frame();
+}
+function stopSetupPreview(){setupPreviewRunning=false}
+function updateSetupPreviewVisibility(){
+    const isSetupActive=$("setupPage").classList.contains("active");
+    const isLandscape=window.matchMedia("(orientation:landscape) and (min-width:640px)").matches;
+    if(isSetupActive&&isLandscape)startSetupPreview();
+    else stopSetupPreview();
 }
 
 
@@ -1350,10 +1426,14 @@ function startModalPreview(){
 $("continueBtn").addEventListener("click",()=>{
     $("setupPage").classList.remove("active");$("audioPage").classList.add("active");
     startRecordingRenderLoop();
+    stopSetupPreview();
 });
 $("backToSetup").addEventListener("click",()=>{
     $("audioPage").classList.remove("active");$("setupPage").classList.add("active");
+    updateSetupPreviewVisibility();
 });
+window.matchMedia("(orientation:landscape)").addEventListener("change",updateSetupPreviewVisibility);
+window.addEventListener("resize",updateSetupPreviewVisibility);
 $("openVisualizerFromSetup").addEventListener("click",openVisualizerModal);
 $("openVisualizerFromAudio").addEventListener("click",openVisualizerModal);
 function openVisualizerModal(){
@@ -1555,6 +1635,7 @@ applySettingsToControls();
 setupDesignControls();
 startRecordingRenderLoop();
 updateTranscriptHighlight();
+updateSetupPreviewVisibility();
 </script>
 </body>
 </html>
