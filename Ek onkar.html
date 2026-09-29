@@ -67,6 +67,13 @@ select,input[type=text],input[type=password]{width:100%;background:#0a0a0f;color
 .choice-card[data-palette] strong{position:relative;z-index:1;width:100%;padding:9px 10px;color:#fff;background:linear-gradient(transparent,#000c);text-shadow:0 1px 3px #000}
 .design-text-field{display:block;margin:13px 0}.design-text-field span{display:block;margin-bottom:6px;color:#aaa;font-size:11px}
 .design-text-field input{background:#09090e;color:#eee;border:1px solid #30303b;border-radius:9px;padding:11px;width:100%}
+.physics-studio{margin-top:18px;padding:14px;border:1px solid #292936;border-radius:15px;background:linear-gradient(145deg,#ffffff06,#ffffff01)}
+.physics-studio-heading{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}.physics-studio-heading h3{margin:0;color:#ffd166;font-size:14px}.physics-studio-heading span{font-size:9px;color:#777;text-transform:uppercase;letter-spacing:.08em}
+.physics-control-group{margin-top:12px}.physics-control-label{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;color:#999;font-size:10px;text-transform:uppercase;letter-spacing:.06em}.physics-tabs{display:grid;grid-template-columns:repeat(auto-fit,minmax(72px,1fr));gap:5px}
+.physics-tab{padding:8px 7px;border:1px solid #30303b;border-radius:8px;background:#09090e;color:#999;font-size:10px;font-weight:700;transition:.16s}.physics-tab:hover{border-color:#777;color:#fff}.physics-tab.active{border-color:#ffd166;background:#ffd16618;color:#ffd166;box-shadow:0 0 0 1px #ffd16618}
+.physics-note{margin-top:10px;color:#666;font-size:9px;line-height:1.45}.physics-preview-card{margin-top:12px;padding:10px;border:1px solid #292936;border-radius:10px;background:#08080d}.physics-preview-card strong{font-size:10px}.physics-preview-card span{display:block;margin-top:3px;color:#777;font-size:9px}
+@media(max-width:500px){.physics-tabs{grid-template-columns:repeat(2,1fr)}}
+
 .design-button-row{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 16px}
 .design-choice{padding:9px 13px;border:1px solid #30303b;border-radius:9px;background:#0a0a0f;color:#bbb;font-size:11px}
 .design-choice:hover{border-color:#777;color:#fff}.design-choice.active{border-color:#ffd166;background:#ffd16618;color:#ffd166}
@@ -166,6 +173,28 @@ select,input[type=text],input[type=password]{width:100%;background:#0a0a0f;color
         <button class="choice-card" data-palette="violet"><span class="palette-swatch"><i style="--swatch:#A98BFF"></i><i style="--swatch:#E4DBFF"></i></span><strong>Violet</strong></button>
         <button class="choice-card" data-palette="forest"><span class="palette-swatch"><i style="--swatch:#63D69A"></i><i style="--swatch:#D3FFE5"></i></span><strong>Forest</strong></button>
         <button class="choice-card" data-palette="ember"><span class="palette-swatch"><i style="--swatch:#FF784F"></i><i style="--swatch:#FFE0A8"></i></span><strong>Ember</strong></button>
+    </div>
+
+    <div class="physics-studio" id="physicsStudio">
+        <div class="physics-studio-heading"><div><h3>⚡ Physics Arena</h3></div><span>Tab controls</span></div>
+        <div class="physics-control-group"><div class="physics-control-label"><span>Arena Shape</span></div><div class="physics-tabs">
+            <button type="button" class="physics-tab" data-physics-shape="circle">Circle</button><button type="button" class="physics-tab" data-physics-shape="box">Box</button><button type="button" class="physics-tab" data-physics-shape="triangle">Triangle</button><button type="button" class="physics-tab" data-physics-shape="hexagon">Hexagon</button><button type="button" class="physics-tab" data-physics-shape="octagon">Octagon</button><button type="button" class="physics-tab" data-physics-shape="doubleRing">Double Ring</button><button type="button" class="physics-tab" data-physics-shape="spiral">Spiral</button>
+        </div></div>
+        <div class="physics-control-group"><div class="physics-control-label"><span>Animation</span></div><div class="physics-tabs">
+            <button type="button" class="physics-tab" data-physics-animation="bounce">Bounce</button><button type="button" class="physics-tab" data-physics-animation="orbit">Orbit</button><button type="button" class="physics-tab" data-physics-animation="vortex">Vortex</button><button type="button" class="physics-tab" data-physics-animation="fountain">Fountain</button><button type="button" class="physics-tab" data-physics-animation="wave">Wave</button><button type="button" class="physics-tab" data-physics-animation="chaos">Chaos</button>
+        </div></div>
+        <div class="physics-control-group"><div class="physics-control-label"><span>Ball Count</span></div><div class="physics-tabs"><button type="button" class="physics-tab" data-physics-setting="physicsBallCount" data-value="4">4</button><button type="button" class="physics-tab" data-physics-setting="physicsBallCount" data-value="8">8</button><button type="button" class="physics-tab" data-physics-setting="physicsBallCount" data-value="12">12</button><button type="button" class="physics-tab" data-physics-setting="physicsBallCount" data-value="20">20</button></div></div>
+        <div class="physics-control-group"><div class="physics-control-label"><span>Arena Size</span></div><div class="physics-tabs"><button type="button" class="physics-tab" data-physics-setting="arenaSize" data-value="48">Small</button><button type="button" class="physics-tab" data-physics-setting="arenaSize" data-value="62">Medium</button><button type="button" class="physics-tab" data-physics-setting="arenaSize" data-value="78">Large</button></div></div>
+        <div class="physics-control-group"><div class="physics-control-label"><span>Gravity</span></div><div class="physics-tabs"><button type="button" class="physics-tab" data-physics-setting="physicsGravity" data-value="5">Low</button><button type="button" class="physics-tab" data-physics-setting="physicsGravity" data-value="18">Medium</button><button type="button" class="physics-tab" data-physics-setting="physicsGravity" data-value="35">High</button></div></div>
+        <div class="physics-control-group"><div class="physics-control-label"><span>Bounce</span></div><div class="physics-tabs"><button type="button" class="physics-tab" data-physics-setting="physicsBounce" data-value="60">Soft</button><button type="button" class="physics-tab" data-physics-setting="physicsBounce" data-value="82">Normal</button><button type="button" class="physics-tab" data-physics-setting="physicsBounce" data-value="98">Hard</button></div></div>
+        <div class="physics-control-group"><div class="physics-control-label"><span>Ball Size</span></div><div class="physics-tabs"><button type="button" class="physics-tab" data-physics-setting="physicsBallSize" data-value="14">Small</button><button type="button" class="physics-tab" data-physics-setting="physicsBallSize" data-value="22">Medium</button><button type="button" class="physics-tab" data-physics-setting="physicsBallSize" data-value="32">Large</button></div></div>
+        <div class="physics-control-group"><div class="physics-control-label"><span>Rotation</span></div><div class="physics-tabs"><button type="button" class="physics-tab" data-physics-setting="arenaRotation" data-value="0">0°</button><button type="button" class="physics-tab" data-physics-setting="arenaRotation" data-value="45">45°</button><button type="button" class="physics-tab" data-physics-setting="arenaRotation" data-value="90">90°</button><button type="button" class="physics-tab" data-physics-setting="arenaRotation" data-value="180">180°</button></div></div>
+        <div class="physics-control-group"><div class="physics-control-label"><span>Border</span></div><div class="physics-tabs"><button type="button" class="physics-tab" data-physics-setting="arenaBorder" data-value="2">Thin</button><button type="button" class="physics-tab" data-physics-setting="arenaBorder" data-value="4">Normal</button><button type="button" class="physics-tab" data-physics-setting="arenaBorder" data-value="8">Thick</button></div></div>
+        <div class="physics-control-group"><div class="physics-control-label"><span>Glow</span></div><div class="physics-tabs"><button type="button" class="physics-tab" data-physics-setting="arenaGlow" data-value="0">None</button><button type="button" class="physics-tab" data-physics-setting="arenaGlow" data-value="24">Soft</button><button type="button" class="physics-tab" data-physics-setting="arenaGlow" data-value="50">Strong</button></div></div>
+        <div class="physics-control-group"><div class="physics-control-label"><span>Sound</span></div><div class="physics-tabs"><button type="button" class="physics-tab" data-physics-toggle="physicsSoundEnabled" data-value="true">On</button><button type="button" class="physics-tab" data-physics-toggle="physicsSoundEnabled" data-value="false">Off</button></div></div>
+        <div class="physics-control-group"><div class="physics-control-label"><span>Particles</span></div><div class="physics-tabs"><button type="button" class="physics-tab" data-physics-toggle="physicsParticlesEnabled" data-value="true">On</button><button type="button" class="physics-tab" data-physics-toggle="physicsParticlesEnabled" data-value="false">Off</button></div></div>
+        <div class="physics-control-group"><div class="physics-control-label"><span>Beat Reactive</span></div><div class="physics-tabs"><button type="button" class="physics-tab" data-physics-toggle="arenaBeatReactive" data-value="true">On</button><button type="button" class="physics-tab" data-physics-toggle="arenaBeatReactive" data-value="false">Off</button></div></div>
+        <div class="physics-note">No sliders. Every physics setting is selected with discrete tab buttons, so the same setup is easy to reproduce while recording.</div>
     </div>
 </div>
 <div id="designPanelBackground" class="design-panel" role="tabpanel" aria-labelledby="designTabBackground" hidden>
@@ -510,6 +539,7 @@ const visualizerSettings = {
     emojiAccents:true,beatRings:true,quality:"low",fps:30,videoBitrate:2500000,
     audioBitrate:64000,backgroundTheme:"spiritual",backgroundAnimation:"slowZoom",
     visualizerPreset:"sacred",colorPreset:"gold",
+    physicsMode:false,arenaStyle:"circle",physicsAnimation:"bounce",physicsBallCount:8,arenaSize:62,physicsGravity:18,physicsBounce:82,physicsBallSize:22,arenaRotation:0,arenaBorder:4,arenaGlow:24,physicsSoundEnabled:true,physicsParticlesEnabled:true,arenaBeatReactive:true,
     backgroundOpacity:.55,backgroundBlur:0,backgroundOverlay:.25,
     backgroundImage:null,backgroundImageName:"",backgroundImageObject:null
 };
@@ -773,6 +803,12 @@ function syncBackgroundStudioUI(){
     }
 }
 
+function syncPhysicsPanel(){
+    document.querySelectorAll("[data-physics-shape]").forEach(b=>b.classList.toggle("active",b.dataset.physicsShape===visualizerSettings.arenaStyle));
+    document.querySelectorAll("[data-physics-animation]").forEach(b=>b.classList.toggle("active",b.dataset.physicsAnimation===visualizerSettings.physicsAnimation));
+    document.querySelectorAll("[data-physics-setting]").forEach(b=>b.classList.toggle("active",Number(b.dataset.value)===Number(visualizerSettings[b.dataset.physicsSetting])));
+    document.querySelectorAll("[data-physics-toggle]").forEach(b=>b.classList.toggle("active",String(visualizerSettings[b.dataset.physicsToggle])===b.dataset.value));
+}
 function syncDesignChoiceUI(){
     document.querySelectorAll("[data-preset]").forEach(button=>button.classList.toggle("active",button.dataset.preset===visualizerSettings.visualizerPreset));
     document.querySelectorAll("[data-palette]").forEach(button=>button.classList.toggle("active",button.dataset.palette===visualizerSettings.colorPreset));
@@ -871,12 +907,14 @@ function setupDesignControls(){
         classic:{ballStyle:"orb",lineStyle:"wave",glow:30,trail:20,particles:15,beatReaction:45,enableGlow:true,enableTrails:true,enableParticles:true,enableRings:true},
         lightning:{ballStyle:"lightning",lineStyle:"wave",glow:65,trail:15,particles:15,beatReaction:80,enableGlow:true,enableTrails:true,enableParticles:true,enableRings:true},
         rainfall:{ballStyle:"orb",lineStyle:"falling",glow:30,trail:10,particles:20,beatReaction:50,enableGlow:true,enableTrails:false,enableParticles:true,enableRings:true},
-        bounce:{ballStyle:"bounce",lineStyle:"smooth",glow:35,trail:30,particles:20,beatReaction:60,enableGlow:true,enableTrails:true,enableParticles:true,enableRings:true}
+        bounce:{ballStyle:"bounce",lineStyle:"smooth",glow:35,trail:30,particles:20,beatReaction:60,enableGlow:true,enableTrails:true,enableParticles:true,enableRings:true},
+        physicsArena:{physicsMode:true,ballStyle:"solid",lineStyle:"smooth",glow:35,trail:10,particles:10,beatReaction:70,enableGlow:true,enableTrails:false,enableParticles:true,enableRings:true}
     };
     document.querySelectorAll("[data-preset]").forEach(button=>button.addEventListener("click",()=>{
         visualizerSettings.visualizerPreset=button.dataset.preset;
         Object.assign(visualizerSettings,visualizerPresets[button.dataset.preset]);
-        saveSettings();syncDesignChoiceUI();
+        if(button.dataset.preset!=="physicsArena")visualizerSettings.physicsMode=false;else resetPhysicsArena();
+        saveSettings();syncPhysicsPanel();syncDesignChoiceUI();
     }));
 
     const palettes={
@@ -910,11 +948,11 @@ function setupDesignControls(){
     [["titleTextChoice","titleText"],["subtitleTextChoice","subtitleText"]].forEach(([visibleId,setting])=>$(visibleId).addEventListener("input",()=>{
         visualizerSettings[setting]=$(visibleId).value;setControl(setting,visualizerSettings[setting]);saveSettings();updateSubtitlePreview();
     }));
-    document.querySelectorAll("[data-quality]").forEach(button=>button.addEventListener("click",()=>{
-        setControl("videoQuality",button.dataset.quality);
-        $("videoQuality").dispatchEvent(new Event("change",{bubbles:true}));
-        syncDesignChoiceUI();
-    }));
+    document.querySelectorAll("[data-physics-shape]").forEach(button=>button.addEventListener("click",()=>{visualizerSettings.physicsMode=true;visualizerSettings.visualizerPreset="physicsArena";visualizerSettings.arenaStyle=button.dataset.physicsShape;resetPhysicsArena();saveSettings();syncPhysicsPanel();syncDesignChoiceUI()}));
+    document.querySelectorAll("[data-physics-animation]").forEach(button=>button.addEventListener("click",()=>{visualizerSettings.physicsMode=true;visualizerSettings.visualizerPreset="physicsArena";visualizerSettings.physicsAnimation=button.dataset.physicsAnimation;resetPhysicsArena();saveSettings();syncPhysicsPanel();syncDesignChoiceUI()}));
+    document.querySelectorAll("[data-physics-setting]").forEach(button=>button.addEventListener("click",()=>{visualizerSettings.physicsMode=true;visualizerSettings.visualizerPreset="physicsArena";visualizerSettings[button.dataset.physicsSetting]=Number(button.dataset.value);resetPhysicsArena();saveSettings();syncPhysicsPanel();syncDesignChoiceUI()}));
+    document.querySelectorAll("[data-physics-toggle]").forEach(button=>button.addEventListener("click",()=>{visualizerSettings.physicsMode=true;visualizerSettings.visualizerPreset="physicsArena";visualizerSettings[button.dataset.physicsToggle]=button.dataset.value==="true";saveSettings();syncPhysicsPanel();syncDesignChoiceUI()}));
+    syncPhysicsPanel();
     syncDesignChoiceUI();
     syncSubtitleLanguage(transcriptWords.map(word=>word.text).join(" "));
 }
@@ -1358,6 +1396,102 @@ function drawPreviewSubtitle(c,W,H,data){
    SHARED RENDERER
 ========================================================= */
 
+/* =========================================================
+   PHYSICS ARENA
+========================================================= */
+let physicsBalls=[];
+let physicsSparks=[];
+let physicsLastTime=0;
+let physicsAudioCtx=null;
+let physicsAudioLast=0;
+function physicsRadius(W,H){const size=Number(visualizerSettings.arenaSize);return Math.min(W,H)*(Number.isFinite(size)?size:62)/200}
+function physicsCenter(W,H){return {x:W/2,y:H/2}}
+function physicsPolygon(n,r,rot){const a=[];const start=-Math.PI/2+rot*Math.PI/180;for(let i=0;i<n;i++){const t=start+i*Math.PI*2/n;a.push({x:Math.cos(t)*r,y:Math.sin(t)*r})}return a}
+function pointInsideConvex(x,y,poly,pad=0){for(let i=0;i<poly.length;i++){const a=poly[i],b=poly[(i+1)%poly.length],ex=b.x-a.x,ey=b.y-a.y;const len=Math.hypot(ex,ey)||1;const nx=ey/len,ny=-ex/len;if((x-a.x)*nx+(y-a.y)*ny> -pad)return false}return true}
+function physicsBoundary(W,H){const r=physicsRadius(W,H),s=visualizerSettings.arenaStyle;if(s==="circle"||s==="doubleRing"||s==="spiral")return{type:"circle",r};if(s==="box")return{type:"box",w:r*1.62,h:r*1.62};const sides={triangle:3,hexagon:6,octagon:8}[s]||6;return{type:"poly",poly:physicsPolygon(sides,r,0)} }
+function resetPhysicsArena(){
+    physicsBalls=[];physicsSparks=[];physicsLastTime=performance.now(); physicsAudioLast=0;
+    const count=Math.max(1,Number.isFinite(Number(visualizerSettings.physicsBallCount))?Number(visualizerSettings.physicsBallCount):8);
+    for(let i=0;i<count;i++){const a=Math.random()*Math.PI*2,rr=Math.random()*.55;physicsBalls.push({x:Math.cos(a)*rr,y:Math.sin(a)*rr,vx:(Math.random()-.5)*0.72,vy:(Math.random()-.5)*0.72,r:(Number.isFinite(Number(visualizerSettings.physicsBallSize))?Number(visualizerSettings.physicsBallSize):22)*.65,phase:Math.random()*Math.PI*2,hue:i/count})}
+}
+function physicsPlaySound(power){
+    if(!visualizerSettings.physicsSoundEnabled)return;
+    try{
+        const nowMs=performance.now();
+        if(nowMs-physicsAudioLast<120)return;
+        physicsAudioLast=nowMs;
+        if(!physicsAudioCtx)physicsAudioCtx=new(window.AudioContext||window.webkitAudioContext)();
+        if(physicsAudioCtx.state==="suspended")physicsAudioCtx.resume();
+        const now=physicsAudioCtx.currentTime;
+        const o=physicsAudioCtx.createOscillator(),g=physicsAudioCtx.createGain();
+        o.type="sine";
+        const p=Math.max(0,Math.min(1,power));
+        o.frequency.setValueAtTime(170+p*260,now);
+        o.frequency.exponentialRampToValueAtTime(115,now+.28);
+        g.gain.setValueAtTime(.0001,now);
+        g.gain.exponentialRampToValueAtTime(.025+p*.018,now+.025);
+        g.gain.exponentialRampToValueAtTime(.0001,now+.34);
+        o.connect(g);g.connect(physicsAudioCtx.destination);o.start(now);o.stop(now+.36);
+    }catch(e){}
+}
+function physicsSpark(x,y,power){if(!visualizerSettings.physicsParticlesEnabled)return;for(let i=0;i<Math.min(8,2+Math.floor(power*7));i++){const a=Math.random()*Math.PI*2;physicsSparks.push({x,y,vx:Math.cos(a)*(1+Math.random()*3)*power,vy:Math.sin(a)*(1+Math.random()*3)*power,life:1})}}
+function constrainPhysicsBall(b,W,H,data){
+    const B=physicsBoundary(W,H),pad=b.r+2,rot=visualizerSettings.arenaRotation*Math.PI/180,cr=Math.cos(-rot),sr=Math.sin(-rot),x=b.x*cr-b.y*sr,y=b.x*sr+b.y*cr;
+    let hit=false,nx=0,ny=0,penetration=0;
+    if(B.type==="circle"){const d=Math.hypot(x,y)||.0001,max=B.r-pad;if(d>max){nx=x/d;ny=y/d;penetration=d-max;hit=true}}
+    else if(B.type==="box"){const hw=B.w/2-pad,hh=B.h/2-pad;if(x>hw){nx=-1;penetration=x-hw;hit=true}else if(x<-hw){nx=1;penetration=-hw-x;hit=true}if(y>hh){ny=-1;penetration=Math.max(penetration,y-hh);hit=true}else if(y<-hh){ny=1;penetration=Math.max(penetration,-hh-y);hit=true}}
+    else {let maxD=-Infinity,enx=0,eny=0;for(let i=0;i<B.poly.length;i++){const a=B.poly[i],bb=B.poly[(i+1)%B.poly.length],ex=bb.x-a.x,ey=bb.y-a.y,len=Math.hypot(ex,ey)||1;const en={x:ey/len,y:-ex/len};const d=(x-a.x)*en.x+(y-a.y)*en.y;if(d>maxD){maxD=d;enx=en.x;eny=en.y}}if(maxD>-pad){penetration=maxD+pad;nx=-enx;ny=-eny;hit=true}}
+    if(hit){const tx=nx*cr+ny*sr,ty=-nx*sr+ny*cr;b.x-=tx*penetration;b.y-=ty*penetration;const vn=b.vx*tx+b.vy*ty;if(vn>0)b.vx-=vn*(1+visualizerSettings.physicsBounce/100),b.vy-=vn*(1+visualizerSettings.physicsBounce/100);const power=Math.min(1,Math.abs(vn)+.25);physicsSpark(b.x,b.y,power);physicsPlaySound(power);}
+}
+function updatePhysics(W,H,data){
+    // Physics Arena intentionally runs in a calm, relaxing slow-motion range.
+    const physicsSlowFactor = .32;
+
+    if(!physicsBalls.length||physicsBalls.length!==visualizerSettings.physicsBallCount)resetPhysicsArena();
+    const now=performance.now(),dt=Math.min(.035,Math.max(.008,(now-physicsLastTime)/1000||.016));physicsLastTime=now;
+    const t=now/1000,grav=visualizerSettings.physicsGravity/30;
+    physicsBalls.forEach((b,i)=>{b.r=(Number.isFinite(Number(visualizerSettings.physicsBallSize))?Number(visualizerSettings.physicsBallSize):22)*.65;const mode=visualizerSettings.physicsAnimation;
+        if(mode==="orbit"){const a=b.phase+t*(.45+i*.012),rr=physicsRadius(W,H)*(.2+.035*(i%5));b.vx+=(Math.cos(a)*rr-b.x)*.045;b.vy+=(Math.sin(a)*rr-b.y)*.045}
+        else if(mode==="vortex"){const d=Math.hypot(b.x,b.y)||1;b.vx+=(-b.y/d)*.75*dt*30+( -b.x*.02);b.vy+=(b.x/d)*.75*dt*30+(-b.y*.02)}
+        else if(mode==="fountain"){b.vy-=.12*dt*30*(i%3===0?1.5:1);b.vx+=Math.sin(t*3+b.phase)*.025}
+        else if(mode==="wave"){b.vy+=Math.sin(t*3+b.x*.018+b.phase)*.8*dt*30}
+        else if(mode==="chaos"){b.vx+=Math.sin(t*4+b.phase+i)*.5*dt*30;b.vy+=Math.cos(t*3+b.phase-i)*.5*dt*30}
+        else {b.vy+=grav*dt*30}
+        if(visualizerSettings.arenaBeatReactive)b.vx*=1+data.beat*.025,b.vy*=1+data.beat*.025;
+        b.x+=b.vx*dt*30;b.y+=b.vy*dt*30;b.vx*=.998;b.vy*=.998;constrainPhysicsBall(b,W,H,data);
+    });
+    for(let i=0;i<physicsBalls.length;i++)for(let j=i+1;j<physicsBalls.length;j++){const a=physicsBalls[i],b=physicsBalls[j],dx=b.x-a.x,dy=b.y-a.y,d=Math.hypot(dx,dy)||.001,min=a.r+b.r;if(d<min){const nx=dx/d,ny=dy/d,over=min-d;a.x-=nx*over/2;a.y-=ny*over/2;b.x+=nx*over/2;b.y+=ny*over/2;const rv=(b.vx-a.vx)*nx+(b.vy-a.vy)*ny;if(rv<0){const imp=-rv*(visualizerSettings.physicsBounce/100);a.vx-=nx*imp;a.vy-=ny*imp;b.vx+=nx*imp;b.vy+=ny*imp;physicsSpark((a.x+b.x)/2,(a.y+b.y)/2,Math.min(1,Math.abs(rv)));physicsPlaySound(Math.min(1,Math.abs(rv)))}}}
+    physicsSparks.forEach(s=>{s.x+=s.vx;s.y+=s.vy;s.vx*=.96;s.vy*=.96;s.life-=.045});physicsSparks=physicsSparks.filter(s=>s.life>0);
+}
+function drawPhysicsArena(c,W,H,data){
+    const center=physicsCenter(W,H),r=physicsRadius(W,H),s=visualizerSettings.arenaStyle,rot=visualizerSettings.arenaRotation*Math.PI/180;
+    c.save();c.translate(center.x,center.y);c.rotate(rot);c.lineWidth=visualizerSettings.arenaBorder;c.strokeStyle=hexToRgba(visualizerSettings.primaryColor,.9);c.shadowColor=visualizerSettings.primaryColor;c.shadowBlur=visualizerSettings.arenaGlow;c.fillStyle=hexToRgba(visualizerSettings.primaryColor,.035);
+    if(s==="circle"||s==="doubleRing"||s==="spiral"){c.beginPath();c.arc(0,0,r,0,Math.PI*2);c.fill();c.stroke();if(s==="doubleRing"){c.beginPath();c.arc(0,0,r*.72,0,Math.PI*2);c.stroke()}if(s==="spiral"){c.beginPath();for(let a=0;a<Math.PI*7;a+=.08){const rr=r*.08+(r*.82)*a/(Math.PI*7);const x=Math.cos(a)*rr,y=Math.sin(a)*rr;a===0?c.moveTo(x,y):c.lineTo(x,y)}c.stroke()}}
+    else if(s==="box"){c.fillRect(-r*.81,-r*.81,r*1.62,r*1.62);c.strokeRect(-r*.81,-r*.81,r*1.62,r*1.62)}
+    else {const poly=physicsPolygon({triangle:3,hexagon:6,octagon:8}[s]||6,r,0);c.beginPath();poly.forEach((p,i)=>i?c.lineTo(p.x,p.y):c.moveTo(p.x,p.y));c.closePath();c.fill();c.stroke()}
+    c.shadowBlur=0;c.restore();
+    physicsBalls.forEach((b,i)=>{
+        // Never pass NaN/Infinity into Canvas geometry APIs.
+        const bx=Number.isFinite(Number(b.x))?Number(b.x):0;
+        const by=Number.isFinite(Number(b.y))?Number(b.y):0;
+        const br=Number.isFinite(Number(b.r))&&Number(b.r)>0?Number(b.r):14;
+        const x=Number.isFinite(center.x+bx)?center.x+bx:center.x;
+        const y=Number.isFinite(center.y+by)?center.y+by:center.y;
+        const safeEnergy=Number.isFinite(Number(data.energy))?Number(data.energy):0;
+        const safeBeat=Number.isFinite(Number(data.beat))?Number(data.beat):0;
+        const grad=c.createRadialGradient(x-br*.3,y-br*.3,1,x,y,Math.max(1,br*1.5));
+        grad.addColorStop(0,"#fff");grad.addColorStop(.22,visualizerSettings.secondaryColor);grad.addColorStop(.7,visualizerSettings.primaryColor);grad.addColorStop(1,hexToRgba(visualizerSettings.primaryColor,0));
+        c.save();c.fillStyle=grad;c.shadowColor=visualizerSettings.primaryColor;c.shadowBlur=10+safeEnergy*18;c.beginPath();c.arc(x,y,Math.max(1,br*(1+safeBeat*.08)),0,Math.PI*2);c.fill();c.restore();
+    });
+    physicsSparks.forEach(s=>{c.save();c.globalAlpha=s.life;c.fillStyle=visualizerSettings.secondaryColor;c.beginPath();c.arc(center.x+s.x,center.y+s.y,2.5*s.life,0,Math.PI*2);c.fill();c.restore()});
+}
+function renderPhysicsFrame(renderCtx,renderCanvas,data){
+    updatePhysics(renderCanvas.width,renderCanvas.height,data);
+    // Final hard containment pass: no ball center/radius may cross the arena boundary.
+    physicsBalls.forEach(b=>constrainPhysicsBall(b,renderCanvas.width,renderCanvas.height,data));
+    drawPhysicsArena(renderCtx,renderCanvas.width,renderCanvas.height,data);
+}
+
 function renderVisualizer(renderCtx,renderCanvas,data,mode){
     if(!renderCtx||!renderCanvas)return;
     const W=renderCanvas.width,H=renderCanvas.height;
@@ -1365,9 +1499,13 @@ function renderVisualizer(renderCtx,renderCanvas,data,mode){
     updateBeatEngine(data);
     renderCtx.clearRect(0,0,W,H);
     drawBackground(renderCtx,W,H,data);
-    updateShockwaves();updateBurstParticles();updateEmojiBursts();
-    drawShockwaves(renderCtx);drawBurstParticles(renderCtx);drawEmojiBursts(renderCtx);
-    drawLine(renderCtx,W,H,data);drawBall(renderCtx,W,H,data);drawFloatingParticles(renderCtx,W,H,data);
+    if(visualizerSettings.physicsMode){
+        renderPhysicsFrame(renderCtx,renderCanvas,data);
+    }else{
+        updateShockwaves();updateBurstParticles();updateEmojiBursts();
+        drawShockwaves(renderCtx);drawBurstParticles(renderCtx);drawEmojiBursts(renderCtx);
+        drawLine(renderCtx,W,H,data);drawBall(renderCtx,W,H,data);drawFloatingParticles(renderCtx,W,H,data);
+    }
     drawVideoText(renderCtx,W,H);renderSharedSubtitles(renderCtx,W,H,data,mode);
 }
 
@@ -1380,11 +1518,17 @@ function startRecordingRenderLoop(){
     if(recordingRenderRunning)return;
     recordingRenderRunning=true;
     function frame(){
+        if(!recordingRenderRunning)return;
         analyzeAudio();
         renderVisualizer(ctx,canvas,getRealAudioData(),"recording");
         requestAnimationFrame(frame);
     }
     frame();
+}
+function isRecordingActive(){return!!(mediaRecorder&&mediaRecorder.state!=="inactive")}
+function stopRecordingRenderLoop(){
+    if(isRecordingActive())return;
+    recordingRenderRunning=false;
 }
 function getPreviewFrameData(){
     if(audioReady&&!audioEl.paused){analyzeAudio();return getRealAudioData()}
@@ -1395,11 +1539,13 @@ function startModalPreview(){
     if(modalPreviewRunning)return;
     modalPreviewRunning=true;
     function frame(){
+        if(!modalPreviewRunning)return;
         if(!modalPaused)renderVisualizer(modalVisualizerCtx,modalVisualizerCanvas,getPreviewFrameData(),"preview");
         requestAnimationFrame(frame);
     }
     frame();
 }
+function stopModalPreview(){modalPreviewRunning=false}
 function startSetupPreview(){
     if(setupPreviewRunning)return;
     setupPreviewRunning=true;
@@ -1414,7 +1560,8 @@ function stopSetupPreview(){setupPreviewRunning=false}
 function updateSetupPreviewVisibility(){
     const isSetupActive=$("setupPage").classList.contains("active");
     const isLandscape=window.matchMedia("(orientation:landscape) and (min-width:640px)").matches;
-    if(isSetupActive&&isLandscape)startSetupPreview();
+    const isModalOpen=$("visualizerModal").classList.contains("open");
+    if(isSetupActive&&isLandscape&&!isRecordingActive()&&!isModalOpen)startSetupPreview();
     else stopSetupPreview();
 }
 
@@ -1430,6 +1577,7 @@ $("continueBtn").addEventListener("click",()=>{
 });
 $("backToSetup").addEventListener("click",()=>{
     $("audioPage").classList.remove("active");$("setupPage").classList.add("active");
+    stopRecordingRenderLoop();
     updateSetupPreviewVisibility();
 });
 window.matchMedia("(orientation:landscape)").addEventListener("change",updateSetupPreviewVisibility);
@@ -1437,9 +1585,15 @@ window.addEventListener("resize",updateSetupPreviewVisibility);
 $("openVisualizerFromSetup").addEventListener("click",openVisualizerModal);
 $("openVisualizerFromAudio").addEventListener("click",openVisualizerModal);
 function openVisualizerModal(){
-    $("visualizerModal").classList.add("open");modalPaused=false;$("modalPlayPause").textContent="⏸ Pause Preview";startModalPreview();
+    $("visualizerModal").classList.add("open");modalPaused=false;$("modalPlayPause").textContent="⏸ Pause Preview";
+    stopSetupPreview();
+    startModalPreview();
 }
-$("closeVisualizerModal").addEventListener("click",()=>$("visualizerModal").classList.remove("open"));
+$("closeVisualizerModal").addEventListener("click",()=>{
+    $("visualizerModal").classList.remove("open");
+    stopModalPreview();
+    updateSetupPreviewVisibility();
+});
 $("modalPlayPause").addEventListener("click",()=>{
     modalPaused=!modalPaused;
     $("modalPlayPause").textContent=modalPaused?"▶ Resume Preview":"⏸ Pause Preview";
@@ -1633,7 +1787,6 @@ enhanceSelects();
 restoreSettings();
 applySettingsToControls();
 setupDesignControls();
-startRecordingRenderLoop();
 updateTranscriptHighlight();
 updateSetupPreviewVisibility();
 </script>
